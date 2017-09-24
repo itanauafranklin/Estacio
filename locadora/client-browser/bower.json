@@ -1,0 +1,32 @@
+{
+  "name": "cliente-browser",
+  "version": "0.0.1",
+  "dependencies": {
+    "angular": "1.5.8",
+    "angular-animate": "1.5.8",
+    "angular-bootstrap": "~0.13.4",
+    "angular-chosen": "http://git.bcnet.bcb.gov.br/bower/angular-chosen.git",
+    "angular-ckeditor": "1.0.3",
+    "angular-cookies": "1.5.8",
+    "angular-hal": "0.1.5",
+    "angular-input-masks": "1.4.0",
+    "angular-loading-bar": "0.7.0",
+    "angular-route": "1.5.8",
+    "angular-route-styles": "latest",
+    "angular-safeapply": "1.0.4",
+    "angular-slick": "0.2.1",
+    "bc-bootstrap3": "http://git.bcnet.bcb.gov.br/disar/bc-boostrap3.git#Antigo",
+    "jquery": "2.1.4",
+    "moment": "2.10.6",
+    "ng-flow": "2.6.1",
+    "underscore": "1.8.3",
+    "underscore.string": "3.2.0"
+  },
+  "devDependencies": {
+    "angular-mocks": "1.5.8"
+  },
+  "resolutions": {
+    "angular": "1.5.8",
+    "angular-animate": "^1.5.8"
+  }
+}
