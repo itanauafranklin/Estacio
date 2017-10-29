@@ -1,0 +1,107 @@
+<!DOCTYPE html>		
+<html lang="pt-br">		
+<head>		  
+	<meta charset="utf-8">		  
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">		  
+	<meta name="viewport" content="width=device-width, initial-scale=1">		  		  
+	
+	
+	<title>Veículos</title>		  		  
+	
+	<!-- Bootstrap CSS -->		  
+	<link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">		  
+	<link href="../bootstrap/css/style.css" rel="stylesheet">		
+</head>	
+
+<body>		  
+  
+  <!-- jQuery (necessario para os plugins Javascript do Bootstrap) -->		  
+  <script src="js/jquery.js"></script>		  
+  <script src="js/bootstrap.min.js"></script>		
+ 
+ <div id="main" class="container-fluid">
+ <h3 class="page-header">VMOURA LOCADORA</h3>
+	<br>
+	 <div id="top" class="row">
+	 
+		 	<div class="col-md-2">
+		 		<h3>Veículos</h3> 
+		 		
+		    </div> <br>
+    
+		    <div class="col-md-5">
+			    <div class="input-group h3">
+		            <input name="data[search]" class="form-control" id="search" type="text" placeholder="Pesquisar placa">
+		            <span class="input-group-btn">
+		                <button class="btn btn-dark" type="submit">Buscar</button>
+		            </span>
+		        </div>
+		    </div>
+		      
+		    <div class="col-md-5">  
+		  		<a href="criar.html" class="btn btn-primary pull-right h2">Novo veículo</a>
+    		</div>
+     </div> <!-- /#top -->
+ 
+     <hr />
+     <div id="list" class="row">
+     	
+     	<div class="table-responsive col-md-12">
+        		<table class="table table-striped" cellspacing="0" cellpadding="0">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Placa </th>
+                    <th>Modelo </th>
+                    <th class="actions">Ações</th>
+                 </tr>
+            </thead>
+            <tbody>
+ 
+                <tr>
+                    <td>001</td>
+                    <td>PUW7782</td>
+                    <td>FOX</td>
+                    <td class="actions">
+                        <a class="btn btn.focus btn-xs" href="detalhar.html">Visualizar</a>
+                        <a class="btn btn.focus btn-xs" href="editar.html">Editar</a>
+                        <a class="btn btn.focus btn-xs"  href="#">Excluir</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>002</td>
+                    <td>KME5810</td>
+                    <td>Pálio</td>
+                    <td class="actions">
+                        <a class="btn btn.focus btn-xs" href="detalhar.html">Visualizar</a>
+                        <a class="btn btn.focus btn-xs" href="editar.html">Editar</a>
+                        <a class="btn btn.focus btn-xs"  href="#">Excluir</a>
+                    </td>
+                </tr>
+ 				<tr>
+                    <td>003</td>
+                    <td>KFJ5449</td>
+                    <td>Fiesta</td>
+                    <td class="actions">
+                        <a class="btn btn.focus btn-xs" href="detalhar.html">Visualizar</a>
+                        <a class="btn btn.focus btn-xs" href="editar.html">Editar</a>
+                        <a class="btn btn.focus btn-xs"  href="#">Excluir</a>
+                    </td>
+                </tr>
+            </tbody>
+         </table>
+ 
+     </div>
+     	
+     </div> <!-- /#list -->
+ 
+     <div id="bottom" class="row">
+          
+     </div> <!-- /#bottom -->
+     
+ </div>  <!-- /#main -->
+
+ 
+ </body>		
+ </html>
+  

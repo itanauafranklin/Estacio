@@ -1,0 +1,62 @@
+<!DOCTYPE html>		
+<html lang="pt-br">		
+<head>		  
+	<meta charset="utf-8">		  
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">		  
+	<meta name="viewport" content="width=device-width, initial-scale=1">		  		  
+	
+	
+	<title>Locação</title>		  		  
+	
+	<!-- Bootstrap CSS -->		  
+	<link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">		  
+	<link href="../bootstrap/css/style.css" rel="stylesheet">		
+</head>	
+
+<body>		  
+  
+  <!-- jQuery (necessario para os plugins Javascript do Bootstrap) -->		  
+  <script src="js/jquery.js"></script>		  
+  <script src="js/bootstrap.min.js"></script>		
+ 
+ <div id="main" class="container-fluid">
+ <h3 class="page-header">Adicionar tipo Item adicional</h3>
+
+		<form action="criar.html">
+		 
+			<div class="row">
+				 <div class="form-group col-md-3">
+				   <label for="nome">Nome</label>
+				   <input type="text" class="form-control" id="nome">
+				 </div>
+				 
+				   <div class="form-group col-md-3">
+				   <label for="descricao">Descrição</label>
+				   <input type="text" class="form-control" id="descricao">
+				 </div>
+				 	
+				  <div class="form-group col-md-3">
+				   <label for="valorDiario">Valor diário</label>
+				   <input type="text" class="form-control" id="valorDiario">
+				 </div>
+				 
+				 <div class="form-group col-md-3">
+				   <label for="qtdTotal">Quantidade total</label>
+				   <input type="text" class="form-control" id="qtdTotal">
+				 </div>
+			</div>
+			
+		  <hr />
+		  <div id="actions" class="row">
+		    <div class="col-md-12">
+		      <button type="submit" class="btn btn-primary">Salvar</button>
+		      <a href="listar.html" class="btn btn-default">Cancelar</a>
+		    </div>
+		  </div>
+		</form>
+
+</div>
+ 
+ </body>		
+ </html>
+  

@@ -1,0 +1,92 @@
+<!DOCTYPE html>		
+<html lang="pt-br">		
+<head>		  
+	<meta charset="utf-8">		  
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">		  
+	<meta name="viewport" content="width=device-width, initial-scale=1">		  		  
+	
+	
+	<title>Locação</title>		  		  
+	
+	<!-- Bootstrap CSS -->		  
+	<link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">		  
+	<link href="../bootstrap/css/style.css" rel="stylesheet">		
+</head>	
+
+<body>		  
+  
+  <!-- jQuery (necessario para os plugins Javascript do Bootstrap) -->		  
+  <script src="js/jquery.js"></script>		  
+  <script src="js/bootstrap.min.js"></script>		
+ 
+ <div id="main" class="container-fluid">
+ <h3 class="page-header">Adicionar Locação</h3>
+
+		<form action="criar.html">
+		 
+			<div class="row">
+				 <div class="form-group col-md-4">
+				   <label for="cpf">CPF</label>
+				   <input type="text" class="form-control" id="cpf">
+				 </div>
+				 
+				   <div class="form-group col-md-4">
+				   <label for="dtRetirada">Data de retirada</label>
+				   <input type="text" class="form-control" id="dtRetirada">
+				 </div>
+				 	
+				  <div class="form-group col-md-4">
+				   <label for="dtEntrega">Data de entrega</label>
+				   <input type="text" class="form-control" id="dtEntrega">
+				 </div>
+				 
+				 <div class="form-group col-md-4">
+				   <label for="veiculo">Veículo (Placa)</label>
+				   <input type="text" class="form-control" id="veiculo">
+				 </div>
+				 
+				  <div class="form-group col-md-4">
+				   <label for="valorlocacao">Valor da locação</label>
+				   <input type="text" class="form-control" id="valorlocacao">
+				 </div>
+				 
+				 <div class="form-group col-md-4">
+				 		<div class="dropdown">
+						  <button class="btn btn-light dropdown-toggle" type="button" data-toggle="dropdown">KM
+						  <span class="caret"></span></button>
+						  <ul class="dropdown-menu">
+						    <li><a href="#">Livre</a></li>
+						    <li><a href="#">KM rodado</a></li>
+						  </ul>
+						</div>
+				 </div>
+				 
+			</div>
+			
+			<div class="row">
+			
+				 <div class="form-group col-md-5">
+				 <ul> <li><a>Itens adicionais</a></li></ul>
+				   <div class="list-group">
+					  <a href="#" class="list-group-item">Cadeirinha de bebê</a>
+					  <a href="#" class="list-group-item">GPS</a>
+					  <a href="#" class="list-group-item">Seguro</a>
+					</div>
+				 </div>
+			</div>
+
+
+		  <hr />
+		  <div id="actions" class="row">
+		    <div class="col-md-12">
+		      <button type="submit" class="btn btn-primary">Salvar</button>
+		      <a href="listar.html" class="btn btn-default">Cancelar</a>
+		    </div>
+		  </div>
+		</form>
+
+</div>
+ 
+ </body>		
+ </html>
+  
