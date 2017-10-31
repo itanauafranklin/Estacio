@@ -1,5 +1,7 @@
 package br.com.locadora.vmoura.dominio;
 
+import java.math.BigDecimal;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -11,7 +13,7 @@ public class ProductController {
 	@Autowired
     private ProductRepository productRepository;
 
-    private Product product = new Product();
+    private Product product = new Product("Itanauã", new BigDecimal("1"));
     
     public Product getProduct() {
         return product;

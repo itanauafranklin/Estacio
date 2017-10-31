@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<ui:composition template="../template.xhtml">
+	<ui:define name="content">
+		<h:form id="form">
+			<div id="main" class="container-fluid">
+				<h3 class="page-header">VMOURA LOCADORA</h3>
+				<br />
+				<div id="top" class="row">
+					<div class="col-md-2">
+						<h3>Clientes</h3>
+					</div>
+					<br />
+					<div class="col-md-5">
+						<div class="input-group h3">
+							<input name="data[search]" class="form-control" id="search"
+								type="text" placeholder="Pesquisar Clientes" /> <span
+								class="input-group-btn">
+								<button class="btn btn-dark" type="submit">Buscar</button>
+							</span>
+						</div>
+					</div>
+					<div class="col-md-5">
+						<a href="criar.html" class="btn btn-primary pull-right h2">Novo Cliente</a>
+					</div>
+				</div>
+				<hr />
+				<div id="list" class="row">
+					<div class="table-responsive col-md-12">
+						<table class="table table-striped" cellspacing="0" cellpadding="0">
+							<thead>
+								<tr>
+									<th>ID</th>
+									<th>Nome</th>
+									<th class="actions">Ações</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>001</td>
+									<td>Victor Vasconcelos</td>
+									<td class="actions"><a class="btn btn.focus btn-xs"
+										href="detalhar.html">Visualizar</a> <a
+										class="btn btn.focus btn-xs" href="editar.html">Editar</a> <a
+										class="btn btn.focus btn-xs" href="#">Excluir</a></td>
+								</tr>
+								<tr>
+									<td>002</td>
+									<td>Itanauã Franklin Barbosa</td>
+									<td class="actions"><a class="btn btn.focus btn-xs"
+										href="detalhar.html">Visualizar</a> <a
+										class="btn btn.focus btn-xs" href="editar.html">Editar</a> <a
+										class="btn btn.focus btn-xs" href="#">Excluir</a></td>
+								</tr>
+								<tr>
+									<td>003</td>
+									<td>Paulo da Silva</td>
+									<td class="actions"><a class="btn btn.focus btn-xs"
+										href="detalhar.html">Visualizar</a> <a
+										class="btn btn.focus btn-xs" href="editar.html">Editar</a> <a
+										class="btn btn.focus btn-xs" href="#">Excluir</a></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<div id="bottom" class="row"></div>
+			</div>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

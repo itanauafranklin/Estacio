@@ -6,18 +6,19 @@
       xmlns:p="http://primefaces.org/ui">
 <f:view>
     <h:head>
-        <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>Product</title>
+		<meta charset="utf-8"/>		  
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>		  
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>	
+       	<link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet"/>	
+       	<ui:insert name="titulo" />
     </h:head>
     <h:body>
         <div class="ui-g">
             <div class="ui-g-12">
                 <p:toolbar>
                     <f:facet name="left">
-                        <p:button href="/product-list.jsf" value="List of Products" />
-                        <p:button href="/product-form.jsf" value="New Product" />
+                        <p:button href="/cliente/listar.jsf" value="Manter Clientes" />
+                        <p:button href="/veiculo/listar.jsf" value="Manter Veículos" />
                     </f:facet>
                 </p:toolbar>
             </div>

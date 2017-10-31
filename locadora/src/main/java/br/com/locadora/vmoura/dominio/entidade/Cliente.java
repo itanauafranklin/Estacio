@@ -2,14 +2,44 @@ package br.com.locadora.vmoura.dominio.entidade;
 
 import java.util.Date;
 
+import javax.persistence.AttributeOverride;
+import javax.persistence.AttributeOverrides;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+@Entity
+@Table(name="CLI_CLIENTE")  
+@AttributeOverrides({  
+    @AttributeOverride(name="codigo", column=@Column(name="CLI_ID")),  
+    @AttributeOverride(name="dataHoraAtualizacao", column=@Column(name="CLI_DH_ATUALIZACAO"))  
+})
 public class Cliente extends ObjetoPersistente {
 	
+	@OneToOne(cascade = CascadeType.ALL)
 	private Endereco endereco;
+	
+	@Column(name = "CLI_TELEFONE")
 	private String telefone;
+	
+	@Column(name = "CLI_NOME")
 	private String nome;
+	
+	@Column(name = "CLI_CPF")
 	private String cpf;
+	
+	@Temporal(TemporalType.DATE)
+	@Column(name = "CLI_DT_NASCIMENTO")
 	private Date dataNascimento;
+	
+	@Column(name = "CLI_RG")
 	private String rg;
+	
+	@Column(name = "CLI_EMAIL")
 	private String email;
 	
 	public Endereco getEndereco() {
