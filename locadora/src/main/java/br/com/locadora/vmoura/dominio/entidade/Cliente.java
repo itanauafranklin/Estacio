@@ -13,14 +13,14 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name="CLI_CLIENTE")  
+@Table(name="CLI_CLIENTE")
 @AttributeOverrides({  
     @AttributeOverride(name="codigo", column=@Column(name="CLI_ID")),  
     @AttributeOverride(name="dataHoraAtualizacao", column=@Column(name="CLI_DH_ATUALIZACAO"))  
 })
 public class Cliente extends ObjetoPersistente {
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(targetEntity = Endereco.class, mappedBy="cliente", cascade = CascadeType.ALL)
 	private Endereco endereco;
 	
 	@Column(name = "CLI_TELEFONE")

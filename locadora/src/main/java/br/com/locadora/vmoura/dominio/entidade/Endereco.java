@@ -4,6 +4,8 @@ import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 @Entity
@@ -13,6 +15,10 @@ import javax.persistence.Table;
     @AttributeOverride(name="dataHoraAtualizacao", column=@Column(name="END_DH_ATUALIZACAO"))  
 })
 public class Endereco extends ObjetoPersistente {
+	
+	@OneToOne
+	@PrimaryKeyJoinColumn
+	private Cliente cliente;
 	
 	@Column(name = "END_LOGRADOURO")
 	private String logradouro;

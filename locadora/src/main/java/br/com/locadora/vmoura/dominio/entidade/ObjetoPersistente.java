@@ -21,7 +21,7 @@ public class ObjetoPersistente {
 	private int codigo;
 	
 	@Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "dataHoraAtualizacao")
+    @Column(name = "dataHoraAtualizacao", nullable = false)
 	private Date dataHoraAtualizacao;
 	
 	public int getCodigo() {
