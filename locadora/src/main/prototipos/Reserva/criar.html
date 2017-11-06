@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">		  		  
 	
 	
-	<title>Locação</title>		  		  
+	<title>Reserva</title>		  		  
 	
 	<!-- Bootstrap CSS -->		  
 	<link href="../bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
@@ -20,37 +20,27 @@
   	
  
  <div id="main" class="container-fluid">
- <h3 class="page-header">Adicionar Locação</h3>
+ <h3 class="page-header">Adicionar Reserva</h3>
 
 		<form action="criar.html">
 		 
 			<div class="row">
-				 <div class="form-group col-md-4">
+				 <div class="form-group col-md-3">
 				   <label for="cpf">CPF</label>
 				   <input type="text" class="form-control" id="cpf">
 				 </div>
 				 
-				   <div class="form-group col-md-4">
+				   <div class="form-group col-md-3">
 				   <label for="dtRetirada">Data de retirada</label>
 				   <input type="text" class="form-control" id="dtRetirada">
 				 </div>
 				 	
-				  <div class="form-group col-md-4">
+				  <div class="form-group col-md-3">
 				   <label for="dtEntrega">Data de entrega</label>
 				   <input type="text" class="form-control" id="dtEntrega">
 				 </div>
 				 
-				 <div class="form-group col-md-4">
-				   <label for="veiculo">Veículo (Placa)</label>
-				   <input type="text" class="form-control" id="veiculo">
-				 </div>
-				 
-				  <div class="form-group col-md-4">
-				   <label for="valorlocacao">Valor da locação</label>
-				   <input type="text" class="form-control" id="valorlocacao">
-				 </div>
-				 
-				 <div class="form-group col-md-4">
+				 <div class="form-group col-md-3">
 				 		<div class="dropdown">
 						  <button class="btn btn-light dropdown-toggle" type="button" data-toggle="dropdown">KM
 						  <span class="caret"></span></button>
@@ -64,15 +54,67 @@
 			</div>
 
 	<div class="panel-group" id="accordion">
-		<h4>Itens adicionais</h4>
+		<h4>Veículos</h4>
 			  <div class="panel panel-default">
 			    <div class="panel-heading">
 			      <h4 class="panel-title">
 			        <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
-			        Cadeirinha de bebê</a>
+			        Econômico</a>
 			      </h4>
 			    </div>
 			    		<div id="collapse1" class="panel-collapse collapse in">
+						     <div class="checkbox">
+						 		 <label><input type="checkbox" value="">Fiat Uno 1.0 - 2 portas</label>
+							</div>
+							<div class="checkbox">
+						  		<label><input type="checkbox" value="">Ford KA 1.0 - 2 portas</label>
+							</div>
+			  			</div>
+			  </div>
+			  <div class="panel panel-default">
+			    <div class="panel-heading">
+			      <h4 class="panel-title">
+			        <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
+			        Econômico com AR</a>
+			      </h4>
+			    </div>
+			    		<div id="collapse2" class="panel-collapse collapse">
+			    			<div class="checkbox">
+						 		 <label><input type="checkbox" value="">HB20 1.0 - 4 portas - Dir Hidráulica - Vidro/Trava elétrica</label>
+							</div>
+							
+			  			</div>
+			 </div>
+			  <div class="panel panel-default">
+			    <div class="panel-heading">
+			      <h4 class="panel-title">
+			        <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
+			        SUV</a>
+			      </h4>
+			    </div>
+			   		 <div id="collapse3" class="panel-collapse collapse">
+			      			<div class="checkbox">
+						 		 <label><input type="checkbox" value="">Peugeot 2008 1.6 - Automático</label>
+							</div>
+							<div class="checkbox">
+						 		 <label><input type="checkbox" value="">Renault Duster 1.6 - Dir Hidráulica</label>
+							</div>
+			  		</div>
+			</div>
+	</div>
+			
+	<br>		
+			
+	<div class="panel-group" id="accordion">
+		<h4>Itens adicionais</h4>
+			  <div class="panel panel-default">
+			    <div class="panel-heading">
+			      <h4 class="panel-title">
+			        <a data-toggle="collapse" data-parent="#accordion" href="#collapse4">
+			        Cadeirinha de bebê</a>
+			      </h4>
+			    </div>
+			    		<div id="collapse4" class="panel-collapse collapse in">
 						     <div class="checkbox">
 						 		 <label><input type="checkbox" value="">Bebê Conforto</label>
 							</div>
@@ -84,11 +126,11 @@
 			  <div class="panel panel-default">
 			    <div class="panel-heading">
 			      <h4 class="panel-title">
-			        <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
+			        <a data-toggle="collapse" data-parent="#accordion" href="#collapse5">
 			        Navegador GPS</a>
 			      </h4>
 			    </div>
-			    		<div id="collapse2" class="panel-collapse collapse">
+			    		<div id="collapse5" class="panel-collapse collapse">
 			    			<div class="checkbox">
 						 		 <label><input type="checkbox" value="">GPS</label>
 							</div>
@@ -98,11 +140,11 @@
 			  <div class="panel panel-default">
 			    <div class="panel-heading">
 			      <h4 class="panel-title">
-			        <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
+			        <a data-toggle="collapse" data-parent="#accordion" href="#collapse6">
 			        Seguro</a>
 			      </h4>
 			    </div>
-			   		 <div id="collapse3" class="panel-collapse collapse">
+			   		 <div id="collapse6" class="panel-collapse collapse">
 			      			<div class="checkbox">
 						 		 <label><input type="checkbox" value="">Seguro para terceiros</label>
 							</div>
