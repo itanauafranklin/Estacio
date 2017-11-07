@@ -1,15 +1,47 @@
 package br.com.locadora.vmoura.dominio.entidade;
 
+import javax.persistence.AttributeOverride;
+import javax.persistence.AttributeOverrides;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="VEI_VEICULO")  
+@AttributeOverrides({  
+    @AttributeOverride(name="codigo", column=@Column(name="VEI_ID")),  
+    @AttributeOverride(name="dataHoraAtualizacao", column=@Column(name="VEI_DH_ATUALIZACAO"))  
+})
 public class Veiculo extends ObjetoPersistente {
 	
+	@Column(name = "VEI_FABRICANTE")
 	private String fabricante;
+	
+	@Column(name = "VEI_MODELO")
 	private String modelo;
+
+	@Column(name = "VEI_ANO_FABRICACAO")
 	private Integer anoFabricacao;
+
+	@Column(name = "VEI_ANO_MODELO")
 	private String anoModelo;
+
+	@Column(name = "VEI_COR")
 	private String cor;
+
+	@Column(name = "VEI_PLACA")
 	private String placa;
+
+	@Column(name = "VEI_TIPO_COMBUSTIVEL")
 	private String tipoCombustivel;
+
+	@Column(name = "VEI_CHASSI")
 	private String chassi;
+
+	@PrimaryKeyJoinColumn
+	@ManyToOne(targetEntity = TipoVeiculo.class, optional = false)
 	private TipoVeiculo tipoVeiculo;
 	
 	public String getFabricante() {
