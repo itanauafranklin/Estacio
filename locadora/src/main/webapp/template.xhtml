@@ -9,20 +9,45 @@
 		<meta charset="utf-8"/>		  
 		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>		  
 		<meta name="viewport" content="width=device-width, initial-scale=1"/>	
-       	<link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet"/>	
+       	<link href="../bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet"/>
+       	<script src="../bootstrap-3.3.7-dist/js/jquery.js"></script>
+		<script src="../bootstrap-3.3.7-dist/js/bootstrap.js"></script>
+		<script type="text/javascript" src="../bootstrap-3.3.7-dist/js/maskedinput-1.1.2.pack.js"></script>
        	<ui:insert name="titulo" />
     </h:head>
     <h:body>
-        <div class="ui-g">
-            <div class="ui-g-12">
-                <p:toolbar>
+		
+		<div class="ui-g">
+            <div>
+                <!-- <p:toolbar>
                     <f:facet name="left">
                         <p:button href="/cliente/listar.jsf" value="Manter Clientes" />
                         <p:button href="/veiculo/listar.jsf" value="Manter Veículos" />
                     </f:facet>
-                </p:toolbar>
-            </div>
+                </p:toolbar> -->
+				<nav class="navbar navbar-default">
+					<div class="container-fluid">
+						<div class="navbar-header">
+							<a class="navbar-brand" href="#">VMoura Locadora</a>
+					    </div>
+						<ul class="nav navbar-nav">
+							<li class="dropdown"><a class="dropdown-toggle"
+								data-toggle="dropdown" href="#">Cadastros<span class="caret"></span></a>
+								<ul class="dropdown-menu">
+									<li><a href="../cliente/listar.jsf">Clientes</a></li>
+									<li><a href="#">Veículos</a></li>
+									<li><a href="#">Itens Adicionais</a></li>
+									<li><a href="../tipoveiculo/listar.jsf">Tipos de veículos</a></li>
+									<li><a href="#">Tipos de Itens Adicionais</a></li>
+								</ul></li>
+							<li><a href="#">Locação</a></li>
+							<li><a href="#">Reserva</a></li>
+						</ul>
+					</div>
+				</nav>
+			</div>
             <div class="ui-g-12">
+            	<p><h:messages style="color: red"></h:messages></p>
                 <ui:insert name="content" />
             </div>
         </div>
