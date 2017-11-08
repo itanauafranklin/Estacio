@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="../template.xhtml">
+	<ui:define name="content">
+		<h:form id="form">
+			<div id="main" class="container-fluid">
+				<h3 class="page-header">Adicionar tipo de veículo</h3>
+				<div class="row">
+					<div class="form-group col-md-3">
+						<label for="nome">Nome</label>
+						<p:inputText id="nome" class="form-control" value="#{tipoVeiculoController.tipoVeiculo.nome}" 
+						required="true" requiredMessage="Campo 'Nome' obrigatório."/>
+					</div>
+					<div class="form-group col-md-3">
+						<label for="valorDiario">Valor diário</label>
+						<h:inputText class="form-control" id="valorDiario" 
+							value="#{tipoVeiculoController.tipoVeiculo.valorDiario}" autocomplete="on"
+							required="true" requiredMessage="Campo 'Valor diário' obrigatório."
+							converterMessage="Campo 'Valor diário' inválido.">
+							<f:convertNumber pattern="#,##0.00" minFractionDigits="2"/>
+						</h:inputText>
+					</div>
+					<div class="form-group col-md-3">
+						<label for="quantidade">Quantidade total</label>
+						<h:inputText class="form-control" id="quantidade" value="#{tipoVeiculoController.tipoVeiculo.quantidadeTotal}"
+							required="true" requiredMessage="Campo 'Quantidade total' obrigatório."
+							converterMessage="Campo 'Quantidade total' inválido.">
+							<f:convertNumber integerOnly="true"/>  
+						</h:inputText>
+					</div>
+					<div class="form-group col-md-3">
+						<label for="valorKM">Valor do KM</label>
+						<h:inputText class="form-control" id="valorKM" value="#{tipoVeiculoController.tipoVeiculo.valorKilometragem}"
+							required="true" requiredMessage="Campo 'Valor do KM' obrigatório."
+							converterMessage="Campo 'Valor do KM' inválido.">
+							<f:convertNumber pattern="#,##0.00" minFractionDigits="2"/>
+						</h:inputText>
+					</div>
+				</div>
+				<div class="row">
+					<div class="form-group col-md-12">
+						<label for="descricao">Descrição</label>
+						<p:inputText class="form-control" id="descricao" value="#{tipoVeiculoController.tipoVeiculo.descricao}" 
+						required="true" requiredMessage="Campo 'Descrição' obrigatório."/>
+					</div>
+				</div>
+				<hr />
+				<div id="actions" class="row">
+					<div class="col-md-12">
+						<h:commandButton class="btn btn-primary" value="Salvar" action="#{tipoVeiculoController.salvar}" />
+						<a href="listar.jsf" class="btn btn-default">Cancelar</a>
+					</div>
+				</div>
+			</div>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>
