@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="../template.xhtml">
+	<ui:define name="content">
+		<h:form id="form">
+			<div id="main" class="container-fluid">
+				<h3 class="page-header">Adicionar veículo</h3>
+				<div class="row">
+					<div class="form-group col-md-3">
+						<label for="placa">Placa</label>
+						<h:inputText id="placa" class="form-control" value="#{veiculoController.veiculo.placa}" 
+						required="true" requiredMessage="Campo 'Placa' obrigatório."/>
+					</div>
+
+					<div class="form-group col-md-3">
+						<label for="anoFab">Ano fabricação</label>
+						<h:inputText class="form-control" id="anoFab" value="#{veiculoController.veiculo.anoFabricacao}"
+							required="true" requiredMessage="Campo 'Ano fabricação' obrigatório."
+							converterMessage="Campo 'Ano fabricação' inválido.">
+							<f:convertNumber integerOnly="true"/>  
+						</h:inputText>
+					</div>
+
+					<div class="form-group col-md-3">
+						<label for="anoMod">Ano modelo</label>
+						<h:inputText id="anoMod" class="form-control" value="#{veiculoController.veiculo.anoModelo}" 
+						required="true" requiredMessage="Campo 'Ano modelo' obrigatório."/>
+					</div>
+
+					<div class="form-group col-md-3">
+						<label for="chassi">Chassi</label>
+						<h:inputText id="chassi" class="form-control" value="#{veiculoController.veiculo.chassi}" 
+						required="true" requiredMessage="Campo 'Chassi' obrigatório."/>
+					</div>
+
+				</div>
+				<div class="row">
+					<div class="form-group col-md-3">
+						<label for="fabricante">Fabricante</label> 
+						<h:inputText id="fabricante" class="form-control" value="#{veiculoController.veiculo.fabricante}" 
+						required="true" requiredMessage="Campo 'Fabricante' obrigatório."/>
+					</div>
+
+					<div class="form-group col-md-3">
+						<label for="modelo">Modelo</label>
+						<h:inputText id="modelo" class="form-control" value="#{veiculoController.veiculo.modelo}" 
+						required="true" requiredMessage="Campo 'Modelo' obrigatório."/>
+					</div>
+
+					<div class="form-group col-md-3">
+						<label for="cor">Cor</label>
+						<h:inputText id="cor" class="form-control" value="#{veiculoController.veiculo.cor}" 
+						required="true" requiredMessage="Campo 'Cor' obrigatório."/>
+					</div>
+
+					<div class="form-group col-md-3">
+						<label for="tpcombustivel">Tipo Combustível</label>
+						<h:selectOneMenu class="form-control btn btn-primary dropdown-toggle" value="#{veiculoController.veiculo.tipoCombustivel}">
+						   	<f:selectItem itemValue="Gasolina"/>
+						   	<f:selectItem itemValue="Álcool" />
+						   	<f:selectItem itemValue="Flex" />
+						</h:selectOneMenu>
+					</div>
+				</div>
+				<div class="row">
+					<div class="form-group col-md-3">
+						<label for="descricao">Tipo de veículo</label>
+						<h:selectOneMenu value="#{veiculoController.veiculo.tipoVeiculo}" class="form-control btn btn-primary dropdown-toggle"
+						 required="true" requiredMessage="Campo 'Tipo de veículo' obrigatório." converter="objPersistenteConverter">
+							<f:selectItem class="dropdown-menu" itemLabel="Selecionar tipo de veículo." itemValue="#{null}" noSelectionOption="true" />
+				   			<f:selectItems class="dropdown-menu" value="#{veiculoController.tiposVeiculos}" var="tipoVeiculo"
+				   			itemLabel="#{tipoVeiculo.nome}" itemValue="#{tipoVeiculo}" />
+				   		</h:selectOneMenu>
+					</div>
+				</div>
+
+				<!-- <div class="dropdown">
+					<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+						Tipo de veículo <span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu">
+						<li><a href="#">Tipo 1</a></li>
+						<li><a href="#">Tipo 2</a></li>
+						<li><a href="#">Tipo 3</a></li>
+					</ul>
+				</div> -->
+
+				<hr />
+				<div id="actions" class="row">
+					<div class="col-md-12">
+						<h:commandButton class="btn btn-primary" value="Salvar" action="#{veiculoController.salvar}" />
+						<a href="listar.jsf" class="btn btn-default">Cancelar</a>
+					</div>
+				</div>
+			</div>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

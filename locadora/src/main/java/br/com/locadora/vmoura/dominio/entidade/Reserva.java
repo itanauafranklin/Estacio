@@ -24,6 +24,11 @@ import javax.persistence.UniqueConstraint;
 })
 public class Reserva extends ObjetoPersistente {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 9129479598015697193L;
+
 	@PrimaryKeyJoinColumn
 	@ManyToOne(targetEntity = Cliente.class, optional = false)
 	private Cliente cliente;

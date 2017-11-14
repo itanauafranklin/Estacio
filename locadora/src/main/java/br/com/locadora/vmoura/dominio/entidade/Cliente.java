@@ -20,6 +20,11 @@ import javax.persistence.TemporalType;
 })
 public class Cliente extends ObjetoPersistente {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7477585978054034991L;
+
 	@OneToOne(targetEntity = Endereco.class, mappedBy="cliente", cascade = CascadeType.ALL)
 	private Endereco endereco;
 	

@@ -7,4 +7,10 @@
     <application>
         <el-resolver>org.springframework.web.jsf.el.SpringBeanFacesELResolver</el-resolver>
     </application>
+    
+	<converter>
+	    <description>Conversor Objeto Persistente</description>
+	    <converter-id>objPersistenteConverter</converter-id>
+	    <converter-class>br.com.locadora.vmoura.dominio.controle.conversor.ObjetoPersistenteConversor</converter-class>
+	</converter>
 </faces-config>

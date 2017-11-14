@@ -16,6 +16,11 @@ import javax.persistence.Table;
 })
 public class Endereco extends ObjetoPersistente {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6942789943442090124L;
+
 	@OneToOne
 	@PrimaryKeyJoinColumn
 	private Cliente cliente;

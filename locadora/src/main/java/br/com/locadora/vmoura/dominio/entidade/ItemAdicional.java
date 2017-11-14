@@ -16,6 +16,11 @@ import javax.persistence.Table;
 })
 public class ItemAdicional extends ObjetoPersistente {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -9007306175596716623L;
+
 	@Column(name = "ITA_MARCA")
 	private String marca;
 	

@@ -16,6 +16,11 @@ import javax.persistence.Table;
 })
 public class Veiculo extends ObjetoPersistente {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5575276363996769910L;
+
 	@Column(name = "VEI_FABRICANTE")
 	private String fabricante;
 	

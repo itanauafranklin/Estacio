@@ -14,6 +14,11 @@ import javax.persistence.Table;
 })
 public class TipoItemAdicional extends ObjetoPersistente {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6756455622776526440L;
+
 	@Column(name = "TIA_NOME")
 	private String nome;
 

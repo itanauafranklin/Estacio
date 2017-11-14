@@ -24,6 +24,11 @@ import javax.persistence.UniqueConstraint;
 })
 public class Locacao extends ObjetoPersistente {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1229454931509831634L;
+
 	@PrimaryKeyJoinColumn
 	@ManyToOne(targetEntity = Cliente.class, optional = false)
 	private Cliente cliente;
