@@ -26,9 +26,13 @@ public class TipoItemAdicionalServico extends AbstractServico<TipoItemAdicional>
 	
 	public List<TipoItemAdicional> pesquisar(String nome) {
 		if (nome == null || nome.trim().isEmpty()) {
-    		return tipoItemAdicionalRepositorio.findAll();
+    		return buscarTodos();
     	} else {
     		return tipoItemAdicionalRepositorio.buscarPorNome(nome);
     	}
+	}
+
+	public List<TipoItemAdicional> buscarTodos() {
+		return tipoItemAdicionalRepositorio.findAll();
 	}
 }
