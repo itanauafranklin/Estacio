@@ -12,56 +12,53 @@
 			<div id="main" class="container-fluid">
 				<div id="top" class="row">
 					<div class="col-md-2">
-						<h3>Tipo de veículos</h3>
+						<h3>Itens adicionais</h3>
 					</div>
 					<br />
 					<div class="col-md-5">
 						<div class="input-group h3">
 							<p:inputText name="data[search]" class="form-control" id="search"
-							 placeholder="Pesquisar nome"
-							 value="#{tipoVeiculoController.filtro}" />
+							 placeholder="Pesquisar item" value="#{ItemAdicionalController.filtro}" />
 								<span class="input-group-btn">
-								<h:commandButton class="btn btn-dark" value="Buscar" action="#{tipoVeiculoController.pesquisar()}" />
+								<h:commandButton class="btn btn-dark" value="Buscar" action="#{ItemAdicionalController.pesquisar()}" />
 							</span>
 						</div>
 					</div>
 					<div class="col-md-5">
-						<h:commandLink action="#{tipoVeiculoController.novoTipo()}"
+						<h:commandLink action="#{ItemAdicionalController.criar()}"
 							class="btn btn-primary pull-right h2">
-							<h:outputText value="Novo tipo de veículo"></h:outputText>
+							<h:outputText value="Novo item adicional"></h:outputText>
 						</h:commandLink>
 					</div>
 				</div>
 				<hr />
 				<div id="list" class="row">
 					<div class="table-responsive col-md-12">
-						<h:dataTable value="#{tipoVeiculoController.pesquisar()}" var="tipoVeiculo"
+						<h:dataTable value="#{ItemAdicionalController.pesquisar()}" var="itemAdicional"
 							class="table table-striped">
 							<h:column>
-								<f:facet name="header">Nome</f:facet>
-								<h:outputText value="#{tipoVeiculo.nome}" />
+								<f:facet name="header">Marca</f:facet>
+								<h:outputText value="#{itemAdicional.marca}" />
 							</h:column>
 							<h:column>
-								<f:facet name="header">Valor diário</f:facet>
-								<h:outputText value="#{tipoVeiculo.valorDiario}">
-									<f:convertNumber pattern="R$ #,##0.00"/>
-								</h:outputText>
+								<f:facet name="header">Tamanho</f:facet>
+								<h:outputText value="#{itemAdicional.tamanho}" />
 							</h:column>
 							<h:column>
-								<f:facet name="header">Quantidade total</f:facet>
-								<h:outputText value="#{tipoVeiculo.quantidadeTotal}" />
+								<f:facet name="header">Tipo de Item</f:facet>
+								<h:outputText value="#{itemAdicional.tipoItemAdicional.nome}" />
 							</h:column>
 							<h:column>
 								<f:facet name="header">Ações</f:facet>
-								<h:commandLink action="#{tipoVeiculoController.detalhar(tipoVeiculo)}"
+								<h:commandLink action="#{ItemAdicionalController.detalhar(itemAdicional)}"
 									class="btn btn.focus btn-xs">
 									<h:outputText value="Visualizar"></h:outputText>
 								</h:commandLink>
-								<h:commandLink action="#{tipoVeiculoController.alterar(tipoVeiculo)}"
+								<h:commandLink action="#{ItemAdicionalController.alterar(itemAdicional)}"
 									class="btn btn.focus btn-xs">
 									<h:outputText value="Editar"></h:outputText>
 								</h:commandLink>
-								<h:commandLink action="#{tipoVeiculoController.excluir(tipoVeiculo)}"
+								<h:commandLink action="#{ItemAdicionalController.excluir(itemAdicional)}"
 									class="btn btn.focus btn-xs">
 									<h:outputText value="Excluir"></h:outputText>
 								</h:commandLink>
