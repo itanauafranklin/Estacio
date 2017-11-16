@@ -2,10 +2,15 @@ package br.com.locadora.vmoura.dominio.servico;
 
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.com.locadora.vmoura.dominio.entidade.Cliente;
 import br.com.locadora.vmoura.dominio.entidade.Reserva;
+import br.com.locadora.vmoura.dominio.repositorio.ClienteRepositorio;
 import br.com.locadora.vmoura.dominio.repositorio.ReservaRepositorio;
 
 @Service
@@ -14,9 +19,26 @@ public class ReservaServico extends AbstractServico<Reserva> {
 	@Autowired
     private ReservaRepositorio reservaRepositorio;
 	
+	@Autowired
+    private ClienteRepositorio clienteRepositorio;
+	
 	@Override
 	protected void salvar(Reserva reserva) {
-		reservaRepositorio.save(reserva);
+		Cliente cliente = clienteRepositorio.buscarPorCPF(reserva.getCpfCliente());
+		reserva.setCliente(cliente);
+		if (validarInclusaoReserva(reserva)) {
+			reservaRepositorio.save(reserva);
+		}
+	}
+
+	private boolean validarInclusaoReserva(Reserva reserva) {
+		boolean isValido = true;
+		if (reserva.getCliente() == null) {
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Cliente não encontrado."));
+			FacesContext.getCurrentInstance().validationFailed();
+			isValido = false;
+		}
+		return isValido;
 	}
 
 	@Override

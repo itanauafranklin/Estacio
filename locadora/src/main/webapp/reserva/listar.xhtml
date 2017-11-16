@@ -44,22 +44,22 @@
 							<h:column>
 								<f:facet name="header">Data de Retirada</f:facet>
 								<h:outputText value="#{reserva.dataRetirada}">
-									<f:convertDateTime pattern="dd/mm/yyyy" />
+									<f:convertDateTime pattern="dd/MM/yyyy" />
 								</h:outputText>
 							</h:column>
 							<h:column>
 								<f:facet name="header">Data de Entrega</f:facet>
 								<h:outputText value="#{reserva.dataEntrega}">
-									<f:convertDateTime pattern="dd/mm/yyyy" />
+									<f:convertDateTime pattern="dd/MM/yyyy" />
 								</h:outputText>
 							</h:column>
 							<h:column>
 								<f:facet name="header">Ações</f:facet>
-								<h:commandLink action="#{reservaController.detalhar(tipoItemAdicional)}"
+								<h:commandLink action="#{reservaController.detalhar(reserva)}"
 									class="btn btn.focus btn-xs">
 									<h:outputText value="Visualizar"></h:outputText>
 								</h:commandLink>
-								<h:commandLink action="#{reservaController.excluir(tipoItemAdicional)}"
+								<h:commandLink action="#{reservaController.excluir(reserva)}"
 									class="btn btn.focus btn-xs">
 									<h:outputText value="Excluir"></h:outputText>
 								</h:commandLink>

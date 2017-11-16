@@ -13,10 +13,11 @@ import org.springframework.context.annotation.Bean;
 
 import br.com.locadora.vmoura.dominio.entidade.Cliente;
 import br.com.locadora.vmoura.dominio.entidade.Endereco;
+import br.com.locadora.vmoura.dominio.entidade.TipoItemAdicional;
 import br.com.locadora.vmoura.dominio.entidade.TipoVeiculo;
 import br.com.locadora.vmoura.dominio.entidade.Veiculo;
 import br.com.locadora.vmoura.dominio.repositorio.ClienteRepositorio;
-import br.com.locadora.vmoura.dominio.repositorio.EnderecoRepositorio;
+import br.com.locadora.vmoura.dominio.repositorio.TipoItemAdicionalRepositorio;
 import br.com.locadora.vmoura.dominio.repositorio.TipoVeiculoRepositorio;
 import br.com.locadora.vmoura.dominio.repositorio.VeiculoRepositorio;
 
@@ -30,7 +31,7 @@ public class VmouraApplication {
 	@Autowired
 	private ClienteRepositorio clienteRepositorio;
 	@Autowired
-	private EnderecoRepositorio enderecoRepositorio;
+	private TipoItemAdicionalRepositorio tipoItemAdicionalRepositorio;
 
 	public static void main(String[] args) {
 		SpringApplication.run(VmouraApplication.class, args);
@@ -86,7 +87,25 @@ public class VmouraApplication {
 		cliente.setDataHoraAtualizacao(new Date());
 		cliente.setEndereco(endereco);
 		clienteRepositorio.save(cliente);
-		enderecoRepositorio.save(endereco);
+		
+//		Cliente cliente2 = clienteRepositorio.getOne(cliente.getCodigo());
+//		System.out.println(cliente2);
+		
+		TipoItemAdicional tipo1 = new TipoItemAdicional();
+		tipo1.setNome("Cadeira de bebê");
+		tipo1.setDescricao("Cadeira de bebê");
+		tipo1.setQuantidadeTotal(5);
+		tipo1.setValorDiario(15.0);
+		tipo1.setDataHoraAtualizacao(new Date());
+		tipoItemAdicionalRepositorio.save(tipo1);
+		
+		TipoItemAdicional tipo2 = new TipoItemAdicional();
+		tipo2.setNome("GPS");
+		tipo2.setDescricao("GPS");
+		tipo2.setQuantidadeTotal(5);
+		tipo2.setValorDiario(15.0);
+		tipo2.setDataHoraAtualizacao(new Date());
+		tipoItemAdicionalRepositorio.save(tipo2);
 	}
 	
 }

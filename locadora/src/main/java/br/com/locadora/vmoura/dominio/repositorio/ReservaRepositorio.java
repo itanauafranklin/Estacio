@@ -10,7 +10,7 @@ import br.com.locadora.vmoura.dominio.entidade.Reserva;
 
 public interface ReservaRepositorio extends JpaRepository<Reserva, Long> {
 	
-	@Query("select reserva from Reserva reserva where reserva.cliente.cpf = :cpf")
+	@Query("select reserva from Reserva reserva where reserva.cliente.cpf like %:cpf%")
 	List<Reserva> buscarPorCPFCliente(@Param("cpf") String cpf);
 
 }

@@ -14,12 +14,10 @@
 				<div class="row">
 					<div class="form-group col-md-3">
 						<label for="placa">CPF</label>
-						<h:selectOneMenu value="#{reservaController.reserva.cliente}" class="form-control btn btn-primary dropdown-toggle"
-						 required="true" requiredMessage="Campo 'Cliente' obrigatório." converter="clienteConverter">
-							<f:selectItem class="dropdown-menu" itemLabel="Selecionar cliente." itemValue="#{null}" noSelectionOption="true" />
-				   			<f:selectItems class="dropdown-menu" value="#{reservaController.clientes}" var="cliente"
-				   			itemLabel="#{cliente.nome}" itemValue="#{cliente}" />
-				   		</h:selectOneMenu>
+						<h:inputText class="form-control" id="cpf" value="#{reservaController.reserva.cpfCliente}"
+							required="true" requiredMessage="Campo 'CPF' obrigatório."
+							converterMessage="O formato do 'CPF' deve ser 'XXX.XXX.XXX-XX'.">
+						</h:inputText>
 					</div>
 
 					<div class="form-group col-md-3">

@@ -4,8 +4,6 @@ import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.OneToOne;
-import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 @Entity
@@ -21,10 +19,6 @@ public class Endereco extends ObjetoPersistente {
 	 */
 	private static final long serialVersionUID = 6942789943442090124L;
 
-	@OneToOne
-	@PrimaryKeyJoinColumn
-	private Cliente cliente;
-	
 	@Column(name = "END_LOGRADOURO")
 	private String logradouro;
 	

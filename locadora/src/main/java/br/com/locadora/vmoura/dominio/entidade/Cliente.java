@@ -7,6 +7,7 @@ import javax.persistence.AttributeOverrides;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -25,8 +26,7 @@ public class Cliente extends ObjetoPersistente {
 	 */
 	private static final long serialVersionUID = -7477585978054034991L;
 
-	@OneToOne(targetEntity = Endereco.class, mappedBy="cliente", 
-			cascade = CascadeType.ALL, optional = false)
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private Endereco endereco;
 	
 	@Column(name = "CLI_TELEFONE")

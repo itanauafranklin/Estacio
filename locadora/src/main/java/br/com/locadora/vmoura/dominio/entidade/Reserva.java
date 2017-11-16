@@ -7,12 +7,14 @@ import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.persistence.UniqueConstraint;
 
 
@@ -46,10 +48,13 @@ public class Reserva extends ObjetoPersistente {
 	@Column(name = "RES_TP_KM")
 	private String tipoKilometragem;
 	
-	@ManyToMany
+	@ManyToMany(fetch = FetchType.EAGER)
 	   @JoinTable(name = "RES_ITA", uniqueConstraints = {@UniqueConstraint(columnNames = {"RES_ID", "ITA_ID"})}, joinColumns = {
 	           @JoinColumn(name = "RES_ID")}, inverseJoinColumns = {@JoinColumn(name = "ITA_ID", nullable = false)})
 	private List<TipoItemAdicional> tiposItensAdicionais;
+	
+	@Transient
+	private String cpfCliente;
 	
 	public Cliente getCliente() {
 		return cliente;
@@ -97,6 +102,14 @@ public class Reserva extends ObjetoPersistente {
 
 	public void setTiposItensAdicionais(List<TipoItemAdicional> tiposItensAdicionais) {
 		this.tiposItensAdicionais = tiposItensAdicionais;
+	}
+
+	public String getCpfCliente() {
+		return cpfCliente;
+	}
+
+	public void setCpfCliente(String cpfCliente) {
+		this.cpfCliente = cpfCliente;
 	}
 
 }
