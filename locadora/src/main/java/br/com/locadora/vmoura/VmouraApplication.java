@@ -87,9 +87,6 @@ public class VmouraApplication {
 		cliente.setEndereco(endereco);
 		clienteRepositorio.save(cliente);
 		enderecoRepositorio.save(endereco);
-		
-		Cliente cliente2 = clienteRepositorio.getOne(cliente.getCodigo());
-		System.out.println(cliente2.getEndereco());
 	}
 	
 }
