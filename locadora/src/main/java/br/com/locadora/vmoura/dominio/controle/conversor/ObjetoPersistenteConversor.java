@@ -9,10 +9,11 @@ import br.com.locadora.vmoura.dominio.entidade.ObjetoPersistente;
 
 public class ObjetoPersistenteConversor<T extends ObjetoPersistente> implements Converter {
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public Object getAsObject(FacesContext facesContext, UIComponent uiComponent, String value) throws ConverterException {
 		if (value != null && !value.isEmpty()) {
-            return (ObjetoPersistente) uiComponent.getAttributes().get(value);
+            return (T) uiComponent.getAttributes().get(value);
         }
         return null;
 	}
@@ -23,7 +24,7 @@ public class ObjetoPersistenteConversor<T extends ObjetoPersistente> implements 
 			@SuppressWarnings("unchecked")
 			T entity= (T) value;
             if (entity != null && entity instanceof ObjetoPersistente && entity.getCodigo() != 0) {
-                uiComponent.getAttributes().put( Integer.toString(entity.getCodigo()), entity);
+                uiComponent.getAttributes().put(Integer.toString(entity.getCodigo()), entity);
                 return Integer.toString(entity.getCodigo());
             }
         }

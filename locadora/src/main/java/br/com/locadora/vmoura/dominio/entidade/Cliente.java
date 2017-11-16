@@ -25,7 +25,8 @@ public class Cliente extends ObjetoPersistente {
 	 */
 	private static final long serialVersionUID = -7477585978054034991L;
 
-	@OneToOne(targetEntity = Endereco.class, mappedBy="cliente", cascade = CascadeType.ALL)
+	@OneToOne(targetEntity = Endereco.class, mappedBy="cliente", 
+			cascade = CascadeType.ALL, optional = false)
 	private Endereco endereco;
 	
 	@Column(name = "CLI_TELEFONE")
@@ -47,14 +48,6 @@ public class Cliente extends ObjetoPersistente {
 	@Column(name = "CLI_EMAIL")
 	private String email;
 	
-	public Endereco getEndereco() {
-		return endereco;
-	}
-
-	public void setEndereco(Endereco endereco) {
-		this.endereco = endereco;
-	}
-
 	public String getTelefone() {
 		return telefone;
 	}
@@ -101,6 +94,14 @@ public class Cliente extends ObjetoPersistente {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public Endereco getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
 	}
 	
 }

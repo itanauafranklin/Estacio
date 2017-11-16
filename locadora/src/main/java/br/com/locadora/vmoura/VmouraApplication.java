@@ -11,8 +11,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 
+import br.com.locadora.vmoura.dominio.entidade.Cliente;
+import br.com.locadora.vmoura.dominio.entidade.Endereco;
 import br.com.locadora.vmoura.dominio.entidade.TipoVeiculo;
 import br.com.locadora.vmoura.dominio.entidade.Veiculo;
+import br.com.locadora.vmoura.dominio.repositorio.ClienteRepositorio;
+import br.com.locadora.vmoura.dominio.repositorio.EnderecoRepositorio;
 import br.com.locadora.vmoura.dominio.repositorio.TipoVeiculoRepositorio;
 import br.com.locadora.vmoura.dominio.repositorio.VeiculoRepositorio;
 
@@ -23,6 +27,10 @@ public class VmouraApplication {
 	private TipoVeiculoRepositorio tipoVeiculoRepositorio;
 	@Autowired
 	private VeiculoRepositorio veiculoRepositorio;
+	@Autowired
+	private ClienteRepositorio clienteRepositorio;
+	@Autowired
+	private EnderecoRepositorio enderecoRepositorio;
 
 	public static void main(String[] args) {
 		SpringApplication.run(VmouraApplication.class, args);
@@ -58,6 +66,30 @@ public class VmouraApplication {
 		veiculo.setTipoVeiculo(tipo);
 		veiculo.setDataHoraAtualizacao(new Date());
 		veiculoRepositorio.save(veiculo);
+		
+		Endereco endereco = new Endereco();
+		endereco.setLogradouro("Rua do espinheiro");
+		endereco.setNumero("201");
+		endereco.setComplemento("apto 202");
+		endereco.setCep("50710-190");
+		endereco.setBairro("Graças");
+		endereco.setCidade("Recife");
+		endereco.setEstado("PE");
+		endereco.setDataHoraAtualizacao(new Date());
+		Cliente cliente = new Cliente();
+		cliente.setCpf("000.000.000-00");
+		cliente.setTelefone("(81)99999-9999");
+		cliente.setRg("0000000");
+		cliente.setNome("Fulano da Silva");
+		cliente.setEmail("fulano@gmail.com");
+		cliente.setDataNascimento(new Date());
+		cliente.setDataHoraAtualizacao(new Date());
+		cliente.setEndereco(endereco);
+		clienteRepositorio.save(cliente);
+		enderecoRepositorio.save(endereco);
+		
+		Cliente cliente2 = clienteRepositorio.getOne(cliente.getCodigo());
+		System.out.println(cliente2.getEndereco());
 	}
 	
 }

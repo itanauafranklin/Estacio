@@ -13,4 +13,19 @@
 	    <converter-id>objPersistenteConverter</converter-id>
 	    <converter-class>br.com.locadora.vmoura.dominio.controle.conversor.ObjetoPersistenteConversor</converter-class>
 	</converter>
+	<converter>
+	    <description>Conversor Tipo Veículo</description>
+	    <converter-id>tipoVeiculoConverter</converter-id>
+	    <converter-class>br.com.locadora.vmoura.dominio.controle.conversor.TipoVeiculoConversor</converter-class>
+	</converter>
+	<converter>
+	    <description>Conversor Tipo Item Adicional</description>
+	    <converter-id>tipoItemAdicionalConverter</converter-id>
+	    <converter-class>br.com.locadora.vmoura.dominio.controle.conversor.TipoItemAdicionalConversor</converter-class>
+	</converter>
+	<converter>
+	    <description>Conversor Cliente</description>
+	    <converter-id>clienteConverter</converter-id>
+	    <converter-class>br.com.locadora.vmoura.dominio.controle.conversor.ClienteConversor</converter-class>
+	</converter>
 </faces-config>

@@ -11,7 +11,7 @@ import br.com.locadora.vmoura.dominio.servico.TipoVeiculoServico;
 
 @Scope(value = "session")
 @Component(value = "tipoVeiculoController")
-public class TipoVeiculoController {
+public class TipoVeiculoController extends GenericController {
 	
 	@Autowired
     private TipoVeiculoServico tipoVeiculoServico;
@@ -26,28 +26,28 @@ public class TipoVeiculoController {
 	
 	public String novoTipo() {
 		tipoVeiculo = new TipoVeiculo();
-		return "criar.jsf?faces-redirect=true";
+		return avancarPagina("criar.jsf?faces-redirect=true");
 	}
 	
 	public String detalhar(TipoVeiculo tipo) {
 		tipoVeiculo = tipo;
-		return "detalhar.jsf?faces-redirect=true";
+		return avancarPagina("detalhar.jsf?faces-redirect=true");
 	}
 	
 	public String alterar(TipoVeiculo tipo) {
 		tipoVeiculo = tipo;
-		return "alterar.jsf?faces-redirect=true";
+		return avancarPagina("alterar.jsf?faces-redirect=true");
 	}
 	
 	public String salvar() {
 		tipoVeiculoServico.salvarEntidade(tipoVeiculo);
 		tipoVeiculo = new TipoVeiculo();
-		return "listar.jsf?faces-redirect=true";
+		return avancarPagina("listar.jsf?faces-redirect=true");
 	}
 	
 	public String excluir(TipoVeiculo tipo) {
 		tipoVeiculoServico.excluir(tipo);
-		return "listar.jsf?faces-redirect=true";
+		return avancarPagina("listar.jsf?faces-redirect=true");
 	}
     
     public List<TipoVeiculo> pesquisar() {
