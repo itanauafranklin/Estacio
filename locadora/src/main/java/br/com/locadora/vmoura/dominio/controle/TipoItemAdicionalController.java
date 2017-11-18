@@ -11,7 +11,7 @@ import br.com.locadora.vmoura.dominio.servico.TipoItemAdicionalServico;
 
 @Scope(value = "session")
 @Component(value = "tipoItemAdicionalController")
-public class TipoItemAdicionalController {
+public class TipoItemAdicionalController extends GenericController {
 	
 	@Autowired
     private TipoItemAdicionalServico tipoItemAdicionalServico;
@@ -26,28 +26,28 @@ public class TipoItemAdicionalController {
 	
 	public String novoTipo() {
 		tipoItemAdicional = new TipoItemAdicional();
-		return "criar.jsf?faces-redirect=true";
+		return avancarPagina("criar.jsf?faces-redirect=true");
 	}
 	
 	public String detalhar(TipoItemAdicional tipo) {
 		tipoItemAdicional = tipo;
-		return "detalhar.jsf?faces-redirect=true";
+		return avancarPagina("detalhar.jsf?faces-redirect=true");
 	}
 	
 	public String alterar(TipoItemAdicional tipo) {
 		tipoItemAdicional = tipo;
-		return "alterar.jsf?faces-redirect=true";
+		return avancarPagina("alterar.jsf?faces-redirect=true");
 	}
 	
 	public String salvar() {
 		tipoItemAdicionalServico.salvarEntidade(tipoItemAdicional);
 		tipoItemAdicional = new TipoItemAdicional();
-		return "listar.jsf?faces-redirect=true";
+		return avancarPagina("listar.jsf?faces-redirect=true");
 	}
 	
 	public String excluir(TipoItemAdicional tipo) {
 		tipoItemAdicionalServico.excluir(tipo);
-		return "listar.jsf?faces-redirect=true";
+		return avancarPagina("listar.jsf?faces-redirect=true");
 	}
     
     public List<TipoItemAdicional> pesquisar() {

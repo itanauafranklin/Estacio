@@ -1,6 +1,5 @@
 package br.com.locadora.vmoura.dominio.controle;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,12 +17,8 @@ import br.com.locadora.vmoura.dominio.servico.VeiculoServico;
 @Scope(value = "session")
 @Component(value = "veiculoController")
 @ManagedBean
-public class VeiculoController implements Serializable {
+public class VeiculoController extends GenericController {
 	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 
 	@Autowired
 	private TipoVeiculoServico tipoVeiculoServico;
@@ -44,28 +39,28 @@ public class VeiculoController implements Serializable {
 	public String criar() {
 		veiculo = new Veiculo();
 		tiposVeiculos = tipoVeiculoServico.buscarTodos();
-		return "criar.jsf?faces-redirect=true";
+		return avancarPagina("criar.jsf?faces-redirect=true");
 	}
 	
 	public String detalhar(Veiculo tipo) {
 		veiculo = tipo;
-		return "detalhar.jsf?faces-redirect=true";
+		return avancarPagina("detalhar.jsf?faces-redirect=true");
 	}
 	
 	public String alterar(Veiculo tipo) {
 		veiculo = tipo;
 		tiposVeiculos = tipoVeiculoServico.buscarTodos();
-		return "alterar.jsf?faces-redirect=true";
+		return avancarPagina("alterar.jsf?faces-redirect=true");
 	}
 	
 	public String salvar() {
 		veiculoServico.salvarEntidade(veiculo);
-		return "listar.jsf?faces-redirect=true";
+		return avancarPagina("listar.jsf?faces-redirect=true");
 	}
 	
 	public String excluir(Veiculo tipo) {
 		veiculoServico.excluir(tipo);
-		return "listar.jsf?faces-redirect=true";
+		return avancarPagina("listar.jsf?faces-redirect=true");
 	}
     
     public List<Veiculo> pesquisar() {

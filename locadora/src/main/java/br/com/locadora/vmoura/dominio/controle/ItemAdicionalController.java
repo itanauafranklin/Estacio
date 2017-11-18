@@ -1,6 +1,5 @@
 package br.com.locadora.vmoura.dominio.controle;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,12 +17,8 @@ import br.com.locadora.vmoura.dominio.servico.TipoItemAdicionalServico;
 @Scope(value = "session")
 @Component(value = "ItemAdicionalController")
 @ManagedBean
-public class ItemAdicionalController implements Serializable {
+public class ItemAdicionalController extends GenericController {
 	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 
 	@Autowired
 	private TipoItemAdicionalServico tipoItemAdicionalServico;
@@ -44,28 +39,28 @@ public class ItemAdicionalController implements Serializable {
 	public String criar() {
 		itemAdicional = new ItemAdicional();
 		tiposItemAdicional = tipoItemAdicionalServico.buscarTodos();
-		return "criar.jsf?faces-redirect=true";
+		return avancarPagina("criar.jsf?faces-redirect=true");
 	}
 	
 	public String detalhar(ItemAdicional tipo) {
 		itemAdicional = tipo;
-		return "detalhar.jsf?faces-redirect=true";
+		return avancarPagina("detalhar.jsf?faces-redirect=true");
 	}
 	
 	public String alterar(ItemAdicional tipo) {
 		itemAdicional = tipo;
 		tiposItemAdicional = tipoItemAdicionalServico.buscarTodos();
-		return "alterar.jsf?faces-redirect=true";
+		return avancarPagina("alterar.jsf?faces-redirect=true");
 	}
 	
 	public String salvar() {
 		itemAdicionalServico.salvarEntidade(itemAdicional);
-		return "listar.jsf?faces-redirect=true";
+		return avancarPagina("listar.jsf?faces-redirect=true");
 	}
 	
 	public String excluir(ItemAdicional tipo) {
 		itemAdicionalServico.excluir(tipo);
-		return "listar.jsf?faces-redirect=true";
+		return avancarPagina("listar.jsf?faces-redirect=true");
 	}
     
     public List<ItemAdicional> pesquisar() {
