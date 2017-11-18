@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
+import javax.transaction.Transactional;
 
 @Entity
 @Table(name="VEI_VEICULO")  
@@ -119,6 +120,11 @@ public class Veiculo extends ObjetoPersistente {
 
 	public void setTipoVeiculo(TipoVeiculo tipoVeiculo) {
 		this.tipoVeiculo = tipoVeiculo;
+	}
+	
+	@Transactional
+	public String getNome() {
+		return "(" + getPlaca() + ") " + getModelo();
 	}
 	
 }
