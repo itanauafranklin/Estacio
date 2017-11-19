@@ -48,6 +48,9 @@ public class Reserva extends ObjetoPersistente {
 	@Column(name = "RES_TP_KM")
 	private String tipoKilometragem;
 	
+	@Column(name = "RES_VALOR")
+	private Double valor;
+	
 	@ManyToMany(fetch = FetchType.EAGER)
 	   @JoinTable(name = "RES_ITA", uniqueConstraints = {@UniqueConstraint(columnNames = {"RES_ID", "ITA_ID"})}, joinColumns = {
 	           @JoinColumn(name = "RES_ID")}, inverseJoinColumns = {@JoinColumn(name = "ITA_ID", nullable = false)})
@@ -110,6 +113,25 @@ public class Reserva extends ObjetoPersistente {
 
 	public void setCpfCliente(String cpfCliente) {
 		this.cpfCliente = cpfCliente;
+	}
+	
+	public Double getValor() {
+		return valor;
+	}
+
+	public void setValor(Double valor) {
+		this.valor = valor;
+	}
+
+	@Transient
+	public Double getCalcularValorTotal() {
+		Double valorTotal = 0.0;
+		
+		if (tipoVeiculo != null) {
+			valorTotal += tipoVeiculo.getValorDiario();
+		}
+		
+		return valorTotal;
 	}
 
 }

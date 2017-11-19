@@ -24,21 +24,22 @@ public class ReservaServico extends AbstractServico<Reserva> {
 	
 	@Override
 	protected void salvar(Reserva reserva) {
-		Cliente cliente = clienteRepositorio.buscarPorCPF(reserva.getCpfCliente());
-		reserva.setCliente(cliente);
-		if (validarInclusaoReserva(reserva)) {
-			reservaRepositorio.save(reserva);
-		}
+		reservaRepositorio.save(reserva);
 	}
 
-	private boolean validarInclusaoReserva(Reserva reserva) {
+	public void validarInclusaoReserva(Reserva reserva) {
+		Cliente cliente = clienteRepositorio.buscarPorCPF(reserva.getCpfCliente());
+		reserva.setCliente(cliente);
 		boolean isValido = true;
 		if (reserva.getCliente() == null) {
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Cliente não encontrado."));
 			FacesContext.getCurrentInstance().validationFailed();
 			isValido = false;
 		}
-		return isValido;
+		
+		if (isValido) {
+			reserva.setValor(reserva.getCalcularValorTotal());
+		}
 	}
 
 	@Override

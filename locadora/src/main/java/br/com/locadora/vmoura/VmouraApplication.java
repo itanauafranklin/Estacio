@@ -88,9 +88,6 @@ public class VmouraApplication {
 		cliente.setEndereco(endereco);
 		clienteRepositorio.save(cliente);
 		
-//		Cliente cliente2 = clienteRepositorio.getOne(cliente.getCodigo());
-//		System.out.println(cliente2);
-		
 		TipoItemAdicional tipo1 = new TipoItemAdicional();
 		tipo1.setNome("Cadeira de bebê");
 		tipo1.setDescricao("Cadeira de bebê");

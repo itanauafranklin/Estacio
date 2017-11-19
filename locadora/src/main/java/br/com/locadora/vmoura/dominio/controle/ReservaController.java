@@ -58,6 +58,11 @@ public class ReservaController extends GenericController {
 		return avancarPagina("detalhar.jsf?faces-redirect=true");
 	}
 	
+	public String confirmar() {
+		reservaServico.validarInclusaoReserva(reserva);
+		return avancarPagina("confirmarCriar.jsf?faces-redirect=true");
+	}
+	
 	public String salvar() {
 		reservaServico.salvarEntidade(reserva);
 		return avancarPagina("listar.jsf?faces-redirect=true");
