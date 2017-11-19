@@ -13,7 +13,7 @@
 				<h3 class="page-header">Adicionar Reserva</h3>
 				<div class="row">
 					<div class="form-group col-md-3">
-						<label for="placa">CPF</label>
+						<label for="cpf">CPF</label>
 						<h:inputText class="form-control" id="cpf" value="#{reservaController.reserva.cpfCliente}"
 							required="true" requiredMessage="Campo 'CPF' obrigatório."
 							converterMessage="O formato do 'CPF' deve ser 'XXX.XXX.XXX-XX'.">
@@ -21,7 +21,7 @@
 					</div>
 
 					<div class="form-group col-md-3">
-						<label for="anoFab">Data de retirada</label>
+						<label for="dtRetirada">Data de retirada</label>
 						<h:inputText class="form-control" id="dtRetirada" value="#{reservaController.reserva.dataRetirada}"
 							required="true" requiredMessage="Campo 'Data de retirada' obrigatório."
 							converterMessage="O formato da 'Data de retirada' deve ser 'dd/mm/aaaa'.">
@@ -30,7 +30,7 @@
 					</div>
 
 					<div class="form-group col-md-3">
-						<label for="anoMod">Data de entrega</label>
+						<label for="dtEntrega">Data de entrega</label>
 						<h:inputText class="form-control" id="dtEntrega" value="#{reservaController.reserva.dataEntrega}"
 							required="true" requiredMessage="Campo 'Data de entrega' obrigatório."
 							converterMessage="O formato da 'Data de entrega' deve ser 'dd/mm/aaaa'.">
@@ -48,7 +48,7 @@
 				</div>
 				<div class="row">
 					<div class="form-group col-md-3">
-						<label for="descricao">Veículo</label>
+						<label for="veiculo">Veículo</label>
 						<h:selectOneMenu value="#{reservaController.reserva.tipoVeiculo}" class="form-control btn btn-primary dropdown-toggle"
 						 required="true" requiredMessage="Campo 'Veículo' obrigatório." converter="tipoVeiculoConverter">
 							<f:selectItem class="dropdown-menu" itemLabel="Selecionar veículo." itemValue="#{null}" noSelectionOption="true" />

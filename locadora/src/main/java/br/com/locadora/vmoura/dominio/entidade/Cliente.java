@@ -48,6 +48,10 @@ public class Cliente extends ObjetoPersistente {
 	@Column(name = "CLI_EMAIL")
 	private String email;
 	
+	public Cliente() {
+		this.endereco = new Endereco();
+	}
+	
 	public String getTelefone() {
 		return telefone;
 	}
