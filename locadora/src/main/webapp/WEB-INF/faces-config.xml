@@ -28,4 +28,9 @@
 	    <converter-id>clienteConverter</converter-id>
 	    <converter-class>br.com.locadora.vmoura.dominio.controle.conversor.ClienteConversor</converter-class>
 	</converter>
+	<converter>
+	    <description>Conversor Veículo</description>
+	    <converter-id>veiculoConverter</converter-id>
+	    <converter-class>br.com.locadora.vmoura.dominio.controle.conversor.VeiculoConversor</converter-class>
+	</converter>
 </faces-config>
