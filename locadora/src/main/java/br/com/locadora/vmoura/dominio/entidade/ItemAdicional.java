@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
+import javax.transaction.Transactional;
 
 @Entity
 @Table(name="ITA_ITEM_ADICIONAL")
@@ -77,4 +78,9 @@ public class ItemAdicional extends ObjetoPersistente {
 		this.tipoItemAdicional = tipoItemAdicional;
 	}
 
+	@Transactional
+	public String getNome() {
+		return getTipoItemAdicional().getNome() + " - " + getMarca();
+	}
+	
 }

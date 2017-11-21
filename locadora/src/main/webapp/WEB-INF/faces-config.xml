@@ -33,4 +33,9 @@
 	    <converter-id>veiculoConverter</converter-id>
 	    <converter-class>br.com.locadora.vmoura.dominio.controle.conversor.VeiculoConversor</converter-class>
 	</converter>
+	<converter>
+	    <description>Conversor Item Adicional</description>
+	    <converter-id>itemAdicionalConverter</converter-id>
+	    <converter-class>br.com.locadora.vmoura.dominio.controle.conversor.ItemAdicionalConversor</converter-class>
+	</converter>
 </faces-config>

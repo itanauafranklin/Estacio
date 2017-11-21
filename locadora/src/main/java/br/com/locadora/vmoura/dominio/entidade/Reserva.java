@@ -17,6 +17,9 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.persistence.UniqueConstraint;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 
 @Entity
 @Table(name="RES_RESERVA")
@@ -52,6 +55,7 @@ public class Reserva extends ObjetoPersistente {
 	private Double valor;
 	
 	@ManyToMany(fetch = FetchType.EAGER)
+	@Fetch(FetchMode.SUBSELECT)
 	   @JoinTable(name = "RES_ITA", uniqueConstraints = {@UniqueConstraint(columnNames = {"RES_ID", "ITA_ID"})}, joinColumns = {
 	           @JoinColumn(name = "RES_ID")}, inverseJoinColumns = {@JoinColumn(name = "ITA_ID", nullable = false)})
 	private List<TipoItemAdicional> tiposItensAdicionais;

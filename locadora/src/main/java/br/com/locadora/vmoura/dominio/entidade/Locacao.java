@@ -7,13 +7,18 @@ import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.persistence.UniqueConstraint;
+
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 
 @Entity
@@ -49,10 +54,14 @@ public class Locacao extends ObjetoPersistente {
 	@Column(name = "LOC_TP_KM")
 	private String tipoKilometragem;
 	
-	@ManyToMany
+	@ManyToMany(fetch = FetchType.EAGER)
+	@Fetch(FetchMode.SUBSELECT)
 	   @JoinTable(name = "LOC_ITA", uniqueConstraints = {@UniqueConstraint(columnNames = {"LOC_ID", "ITA_ID"})}, joinColumns = {
 	           @JoinColumn(name = "LOC_ID")}, inverseJoinColumns = {@JoinColumn(name = "ITA_ID", nullable = false)})
 	private List<ItemAdicional> itensAdicionais;
+	
+	@Transient
+	private String cpfCliente;
 	
 	public Cliente getCliente() {
 		return cliente;
@@ -108,6 +117,14 @@ public class Locacao extends ObjetoPersistente {
 
 	public void setItensAdicionais(List<ItemAdicional> itensAdicionais) {
 		this.itensAdicionais = itensAdicionais;
+	}
+	
+	public String getCpfCliente() {
+		return cpfCliente;
+	}
+
+	public void setCpfCliente(String cpfCliente) {
+		this.cpfCliente = cpfCliente;
 	}
 	
 }

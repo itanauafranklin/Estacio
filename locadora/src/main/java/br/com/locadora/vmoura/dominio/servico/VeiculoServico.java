@@ -26,9 +26,13 @@ public class VeiculoServico extends AbstractServico<Veiculo> {
 	
 	public List<Veiculo> pesquisar(String nome) {
 		if (nome == null || nome.trim().isEmpty()) {
-    		return veiculoRepositorio.findAll();
+    		return buscarTodos();
     	} else {
     		return veiculoRepositorio.buscarPorPlaca(nome);
     	}
+	}
+
+	public List<Veiculo> buscarTodos() {
+		return veiculoRepositorio.findAll();
 	}
 }
