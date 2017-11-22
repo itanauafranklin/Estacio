@@ -117,15 +117,4 @@ public class Reserva extends ObjetoPersistente {
 		this.valor = valor;
 	}
 
-	@Transient
-	public Double getCalcularValorTotal() {
-		Double valorTotal = 0.0;
-		
-		if (tipoVeiculo != null) {
-			valorTotal += tipoVeiculo.getValorDiario();
-		}
-		
-		return valorTotal;
-	}
-
 }

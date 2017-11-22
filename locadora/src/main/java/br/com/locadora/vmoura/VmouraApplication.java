@@ -1,6 +1,7 @@
 package br.com.locadora.vmoura;
 
 import java.util.Date;
+import java.util.TimeZone;
 
 import javax.annotation.PostConstruct;
 import javax.faces.webapp.FacesServlet;
@@ -45,6 +46,8 @@ public class VmouraApplication {
 	
 	@PostConstruct
 	public void init(){
+		TimeZone.setDefault(TimeZone.getTimeZone("UTC"));
+		
 		// init code goes here
 		TipoVeiculo tipo = new TipoVeiculo();
 		tipo.setNome("Econômico sem ar");

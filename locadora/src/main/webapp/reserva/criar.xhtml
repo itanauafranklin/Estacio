@@ -48,10 +48,6 @@
 				   			itemLabel="#{tipoVeiculo.nome}" itemValue="#{tipoVeiculo}" />
 				   		</h:selectOneMenu>
 					</div>
-					<div class="form-group col-md-3">
-						<label for="veiculo">Valor total</label>
-						<p><h:outputText value="#{reservaController.reserva.calcularValorTotal}"/></p>
-					</div>
 				</div>
 				<div class="panel-group">
 					<h4>Itens adicionais</h4>
@@ -70,7 +66,7 @@
 				<hr />
 				<div id="actions" class="row">
 					<div class="col-md-12">
-						<h:commandButton class="btn btn-primary" value="Salvar" action="#{reservaController.confirmar}" />
+						<h:commandButton class="btn btn-primary" value="Avançar" action="#{reservaController.confirmar}" />
 						<a href="listar.jsf" class="btn btn-default">Cancelar</a>
 					</div>
 				</div>
