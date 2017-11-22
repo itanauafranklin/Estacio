@@ -48,7 +48,7 @@ public class TipoItemAdicionalServico extends AbstractServico<TipoItemAdicional>
 	}
 	
 	public boolean isTipoItemAdicionalDisponivel(TipoItemAdicional tipoVeiculo, Date dataInicio, Date dataFim) {
-		return false;
+		return true;
 	}
 
 	public List<TipoItemAdicional> buscarTodos() {

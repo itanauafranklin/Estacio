@@ -48,7 +48,7 @@ public class TipoVeiculoServico extends AbstractServico<TipoVeiculo> {
 	}
 	
 	public boolean isTipoVeiculoDisponivel(TipoVeiculo tipoVeiculo, Date dataInicio, Date dataFim) {
-		return false;
+		return true;
 	}
 	
 	public List<TipoVeiculo> buscarTodos() {
