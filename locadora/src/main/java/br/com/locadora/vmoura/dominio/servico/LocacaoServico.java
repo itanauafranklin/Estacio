@@ -21,6 +21,12 @@ public class LocacaoServico extends AbstractServico<Locacao> {
 	@Autowired
     private ClienteRepositorio clienteRepositorio;
 	
+	@Autowired
+    private TipoVeiculoServico tipoVeiculoServico;
+	
+	@Autowired
+    private TipoItemAdicionalServico tipoItemAdicionalServico;
+	
 	@Override
 	protected void salvar(Locacao locacao) {
 		locacaoRepositorio.save(locacao);
@@ -33,21 +39,27 @@ public class LocacaoServico extends AbstractServico<Locacao> {
 		if (locacao.getCliente() == null) {
 			adicionarMensagemErro("Cliente não encontrado.");
 			isValido = false;
-		}
-		
-		if (locacao.getDataRetirada().before(DataUtil.dataAtualMeiaNoite())) {
+		} else if (locacao.getDataRetirada().before(DataUtil.dataAtualMeiaNoite())) {
 			adicionarMensagemErro("A 'Data de retirada' não pode ser menor que a data de hoje.");
 			isValido = false;
-		}
-		
-		if (locacao.getDataRetirada().after(locacao.getDataEntrega())) {
+		} else if (locacao.getDataRetirada().after(locacao.getDataEntrega())) {
 			adicionarMensagemErro("A 'Data de retirada' não pode ser maior que a 'Data de entrega'.");
 			isValido = false;
-		}
-		
-		if (locacao.getDataEntrega().before(locacao.getDataRetirada())) {
+		} else if (locacao.getDataEntrega().before(locacao.getDataRetirada())) {
 			adicionarMensagemErro("A 'Data de entrega' não pode ser menor que a 'Data de retirada'.");
 			isValido = false;
+		} else if (tipoVeiculoServico.isTipoVeiculoDisponivel(
+				locacao.getVeiculo().getTipoVeiculo(), locacao.getDataRetirada(), locacao.getDataEntrega())) {
+			adicionarMensagemErro("'Veículo' indisponível para as datas informadas.");
+			isValido = false;
+		} else {
+			for (ItemAdicional item : locacao.getItensAdicionais()) {
+				if (tipoItemAdicionalServico.isTipoItemAdicionalDisponivel(
+						item.getTipoItemAdicional(), locacao.getDataRetirada(), locacao.getDataEntrega())) {
+					adicionarMensagemErro("Item adicional '" + item.getTipoItemAdicional().getNome() + "' indisponível para as datas informadas.");
+					isValido = false;
+				}
+			}
 		}
 		
 		if (isValido) {

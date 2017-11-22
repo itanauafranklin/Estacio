@@ -1,5 +1,6 @@
 package br.com.locadora.vmoura.dominio.servico;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,6 +45,10 @@ public class TipoItemAdicionalServico extends AbstractServico<TipoItemAdicional>
     	} else {
     		return tipoItemAdicionalRepositorio.buscarPorNome(nome);
     	}
+	}
+	
+	public boolean isTipoItemAdicionalDisponivel(TipoItemAdicional tipoVeiculo, Date dataInicio, Date dataFim) {
+		return false;
 	}
 
 	public List<TipoItemAdicional> buscarTodos() {

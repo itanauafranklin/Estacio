@@ -21,6 +21,12 @@ public class ReservaServico extends AbstractServico<Reserva> {
 	@Autowired
     private ClienteRepositorio clienteRepositorio;
 	
+	@Autowired
+    private TipoVeiculoServico tipoVeiculoServico;
+	
+	@Autowired
+    private TipoItemAdicionalServico tipoItemAdicionalServico;
+	
 	@Override
 	protected void salvar(Reserva reserva) {
 		reservaRepositorio.save(reserva);
@@ -38,16 +44,24 @@ public class ReservaServico extends AbstractServico<Reserva> {
 		if (reserva.getDataRetirada().before(DataUtil.dataAtualMeiaNoite())) {
 			adicionarMensagemErro("A 'Data de retirada' não pode ser menor que a data de hoje.");
 			isValido = false;
-		}
-		
-		if (reserva.getDataRetirada().after(reserva.getDataEntrega())) {
+		} else if (reserva.getDataRetirada().after(reserva.getDataEntrega())) {
 			adicionarMensagemErro("A 'Data de retirada' não pode ser maior que a 'Data de entrega'.");
 			isValido = false;
-		}
-		
-		if (reserva.getDataEntrega().before(reserva.getDataRetirada())) {
+		} else if (reserva.getDataEntrega().before(reserva.getDataRetirada())) {
 			adicionarMensagemErro("A 'Data de entrega' não pode ser menor que a 'Data de retirada'.");
 			isValido = false;
+		} else if (tipoVeiculoServico.isTipoVeiculoDisponivel(
+				reserva.getTipoVeiculo(), reserva.getDataRetirada(), reserva.getDataEntrega())) {
+			adicionarMensagemErro("'Tipo de veículo' indisponível para as datas informadas.");
+			isValido = false;
+		} else {
+			for (TipoItemAdicional tipoItem : reserva.getTiposItensAdicionais()) {
+				if (tipoItemAdicionalServico.isTipoItemAdicionalDisponivel(
+						tipoItem, reserva.getDataRetirada(), reserva.getDataEntrega())) {
+					adicionarMensagemErro("Item adicional '" + tipoItem.getNome() + "' indisponível para as datas informadas.");
+					isValido = false;
+				}
+			}
 		}
 		
 		if (isValido) {
