@@ -80,7 +80,8 @@ public class ItemAdicional extends ObjetoPersistente {
 
 	@Transactional
 	public String getNome() {
-		return getTipoItemAdicional().getNome() + " - " + getMarca();
+		return getTipoItemAdicional().getNome() + " - " + getMarca() + 
+				" - " + getTipoItemAdicional().getValorDiarioFormatado();
 	}
 	
 }

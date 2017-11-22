@@ -127,7 +127,8 @@ public class Veiculo extends ObjetoPersistente {
 	
 	@Transactional
 	public String getNome() {
-		return "(" + getPlaca() + ") " + getModelo();
+		return "(" + getPlaca() + ") " + getModelo() + 
+				" - " + getTipoVeiculo().getValorDiarioFormatado();
 	}
 
 	public Double getValorDiario() {

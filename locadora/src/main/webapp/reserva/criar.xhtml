@@ -45,7 +45,7 @@
 						 required="true" requiredMessage="Campo 'Veículo' obrigatório." converter="tipoVeiculoConverter">
 							<f:selectItem class="dropdown-menu" itemLabel="Selecionar veículo." itemValue="#{null}" noSelectionOption="true" />
 				   			<f:selectItems class="dropdown-menu" value="#{reservaController.tiposVeiculos}" var="tipoVeiculo"
-				   			itemLabel="#{tipoVeiculo.nome}" itemValue="#{tipoVeiculo}" />
+				   			itemLabel="#{tipoVeiculo.nomeFormatado}" itemValue="#{tipoVeiculo}" />
 				   		</h:selectOneMenu>
 					</div>
 				</div>
@@ -57,7 +57,7 @@
 								<h:selectManyCheckbox value="#{reservaController.reserva.tiposItensAdicionais}" layout="pageDirection"
 								 converter="tipoItemAdicionalConverter">
 						   			<f:selectItems value="#{reservaController.tiposItensAdicionais}" var="tipoItem"
-   										itemLabel="#{tipoItem.nome}" itemValue="#{tipoItem}" />
+   										itemLabel="#{tipoItem.nomeFormatado}" itemValue="#{tipoItem}" />
 						   		</h:selectManyCheckbox>
 							</h4>
 						</div>

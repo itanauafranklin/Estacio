@@ -5,6 +5,7 @@ import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name="TIA_TIPO_ITEM_ADICIONAL")
@@ -61,6 +62,16 @@ public class TipoItemAdicional extends ObjetoPersistente {
 
 	public void setQuantidadeTotal(Integer quantidadeTotal) {
 		this.quantidadeTotal = quantidadeTotal;
+	}
+	
+	public String getValorDiarioFormatado() {
+		String valorFormatado = "R$ " + getValorDiario() + " p/ dia";
+		return valorFormatado.replace(".", ",");
+	}
+	
+	@Transient 
+	public String getNomeFormatado() {
+		return getNome() + " (" + getValorDiarioFormatado() + ")";
 	}
 	
 }
