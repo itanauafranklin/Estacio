@@ -51,7 +51,6 @@ public class VmouraApplication {
 		tipo.setDescricao("Descrição");
 		tipo.setValorDiario(150.0);
 		tipo.setQuantidadeTotal(10);
-		tipo.setValorKilometragem(15.0);
 		tipo.setDataHoraAtualizacao(new Date());
 		tipoVeiculoRepositorio.save(tipo);
 		

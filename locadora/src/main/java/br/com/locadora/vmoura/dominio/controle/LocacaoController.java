@@ -58,6 +58,12 @@ public class LocacaoController extends GenericController {
 		return avancarPagina("detalhar.jsf?faces-redirect=true");
 	}
 	
+	public String confirmar() {
+		locacaoServico.validarInclusaoLocacao(locacao);
+		return avancarPagina("confirmarCriar.jsf?faces-redirect=true");
+	}
+	
+	
 	public String salvar() {
 		locacaoServico.salvarEntidade(locacao);
 		return avancarPagina("listar.jsf?faces-redirect=true");

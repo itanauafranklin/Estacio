@@ -48,9 +48,6 @@ public class Reserva extends ObjetoPersistente {
 	@ManyToOne(targetEntity = TipoVeiculo.class, optional = false)
 	private TipoVeiculo tipoVeiculo;
 	
-	@Column(name = "RES_TP_KM")
-	private String tipoKilometragem;
-	
 	@Column(name = "RES_VALOR")
 	private Double valor;
 	
@@ -95,13 +92,6 @@ public class Reserva extends ObjetoPersistente {
 		this.tipoVeiculo = tipoVeiculo;
 	}
 
-	public String getTipoKilometragem() {
-		return tipoKilometragem;
-	}
-
-	public void setTipoKilometragem(String tipoKilometragem) {
-		this.tipoKilometragem = tipoKilometragem;
-	}
 
 	public List<TipoItemAdicional> getTiposItensAdicionais() {
 		return tiposItensAdicionais;

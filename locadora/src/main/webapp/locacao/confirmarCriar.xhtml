@@ -10,27 +10,27 @@
 	<ui:define name="content">
 		<h:form id="form">
 			<div id="main" class="container-fluid">
-				<h3 class="page-header">Detalhes da Reserva</h3>
+				<h3 class="page-header">Confirmar adicionar Locação</h3>
 				<br />
 				<div class="row">
 					<div class="col-md-4">
 						<p>
 							<strong>CPF</strong>
 						</p>
-						<p><h:outputText value="#{reservaController.reserva.cliente.cpf}"/></p>
+						<p><h:outputText value="#{locacaoController.locacao.cliente.cpf}"/></p>
 					</div>
 					<div class="col-md-4">
 						<p>
 							<strong>Nome</strong>
 						</p>
-						<p><h:outputText value="#{reservaController.reserva.cliente.nome}"/></p>
+						<p><h:outputText value="#{locacaoController.locacao.cliente.nome}"/></p>
 					</div>
 					<div class="col-md-4">
 						<p>
 							<strong>Data retirada</strong>
 						</p>
 						<p>
-							<h:outputText value="#{reservaController.reserva.dataRetirada}">
+							<h:outputText value="#{locacaoController.locacao.dataRetirada}">
 								<f:convertDateTime pattern="dd/MM/yyyy" />
 							</h:outputText>
 						</p>
@@ -40,7 +40,7 @@
 							<strong>Data entrega</strong>
 						</p>
 						<p>
-							<h:outputText value="#{reservaController.reserva.dataEntrega}">
+							<h:outputText value="#{locacaoController.locacao.dataEntrega}">
 								<f:convertDateTime pattern="dd/MM/yyyy" />
 							</h:outputText>
 						</p>
@@ -49,7 +49,7 @@
 						<p>
 							<strong>Veículo</strong>
 						</p>
-						<p><h:outputText value="#{reservaController.reserva.tipoVeiculo.nome}"/></p>
+						<p><h:outputText value="#{locacaoController.locacao.veiculo.nome}"/></p>
 					</div>
 					<div class="col-md-4">
 						<p>
@@ -57,17 +57,28 @@
 						</p>
 						<p>
 							<ul>
-								<ui:repeat value="#{reservaController.reserva.tiposItensAdicionais}" var="tipoItemAdicional">
-								   <li><h:outputText value="#{tipoItemAdicional.nome}"/></li>
+								<ui:repeat value="#{locacaoController.locacao.itensAdicionais}" var="itemAdicional">
+								   <li><h:outputText value="#{itemAdicional.nome}"/></li>
 								</ui:repeat>
 							</ul>
+						</p>
+					</div>
+					<div class="col-md-4">
+						<p>
+							<strong>Valor total</strong>
+						</p>
+						<p>
+							<h:outputText value="#{locacaoController.locacao.valor}">
+								<f:convertNumber pattern="R$ #,##0.00"/>
+							</h:outputText>
 						</p>
 					</div>
 				</div>
 				<hr />
 				<div id="actions" class="row">
 					<div class="col-md-12">
-						<a href="listar.jsf" class="btn btn-primary">Voltar</a>
+						<h:commandButton class="btn btn-primary" value="Salvar" action="#{locacaoController.salvar}" />
+						<a href="javascript:history.go(-1)" class="btn btn-default">Cancelar</a>
 					</div>
 				</div>
 			</div>

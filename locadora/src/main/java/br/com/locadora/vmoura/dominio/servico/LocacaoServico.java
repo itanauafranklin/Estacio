@@ -24,22 +24,26 @@ public class LocacaoServico extends AbstractServico<Locacao> {
 	
 	@Override
 	protected void salvar(Locacao locacao) {
-		Cliente cliente = clienteRepositorio.buscarPorCPF(locacao.getCpfCliente());
-		locacao.setCliente(cliente);
-		if (validarInclusaoLocacao(locacao)) {
 			locacaoRepositorio.save(locacao);
 		}
-	}
 
-	private boolean validarInclusaoLocacao(Locacao locacao) {
+	public void validarInclusaoLocacao(Locacao locacao) {
+		Cliente cliente = clienteRepositorio.buscarPorCPF(locacao.getCpfCliente());
+		locacao.setCliente(cliente);
 		boolean isValido = true;
 		if (locacao.getCliente() == null) {
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Cliente não encontrado."));
 			FacesContext.getCurrentInstance().validationFailed();
 			isValido = false;
 		}
-		return isValido;
+		if (isValido) {
+			locacao.setValor(locacao.getCalcularValorTotal());
+		}
 	}
+
+//	private Double calcularValorTotal(Locacao locacao) {
+//		return locacao.getDataRetirada() locacao.getDataEntrega() locacao.getItensAdicionais() locacao.getVeiculo().getTipoVeiculo().getValorDiario();
+//	}
 
 	@Override
 	public void excluir(Locacao locacao) {

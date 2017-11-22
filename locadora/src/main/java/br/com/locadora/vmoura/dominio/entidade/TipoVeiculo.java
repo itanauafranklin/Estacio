@@ -28,9 +28,6 @@ public class TipoVeiculo extends ObjetoPersistente {
 	@Column(name = "TIV_VL_DIARIO")
 	private Double valorDiario;
 	
-	@Column(name = "TIV_VL_KM")
-	private Double valorKilometragem;
-	
 	@Column(name = "TIV_QTD_TOTAL")
 	private Integer quantidadeTotal;
 	
@@ -56,14 +53,6 @@ public class TipoVeiculo extends ObjetoPersistente {
 
 	public void setValorDiario(Double valorDiario) {
 		this.valorDiario = valorDiario;
-	}
-
-	public Double getValorKilometragem() {
-		return valorKilometragem;
-	}
-
-	public void setValorKilometragem(Double valorKilometragem) {
-		this.valorKilometragem = valorKilometragem;
 	}
 
 	public Integer getQuantidadeTotal() {

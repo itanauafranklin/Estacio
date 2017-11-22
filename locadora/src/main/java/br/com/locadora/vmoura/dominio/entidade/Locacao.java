@@ -51,9 +51,6 @@ public class Locacao extends ObjetoPersistente {
 	@Column(name = "LOC_VALOR")
 	private Double valor;
 	
-	@Column(name = "LOC_TP_KM")
-	private String tipoKilometragem;
-	
 	@ManyToMany(fetch = FetchType.EAGER)
 	@Fetch(FetchMode.SUBSELECT)
 	   @JoinTable(name = "LOC_ITA", uniqueConstraints = {@UniqueConstraint(columnNames = {"LOC_ID", "ITA_ID"})}, joinColumns = {
@@ -103,14 +100,6 @@ public class Locacao extends ObjetoPersistente {
 		this.valor = valor;
 	}
 
-	public String getTipoKilometragem() {
-		return tipoKilometragem;
-	}
-
-	public void setTipoKilometragem(String tipoKilometragem) {
-		this.tipoKilometragem = tipoKilometragem;
-	}
-
 	public List<ItemAdicional> getItensAdicionais() {
 		return itensAdicionais;
 	}
@@ -126,5 +115,17 @@ public class Locacao extends ObjetoPersistente {
 	public void setCpfCliente(String cpfCliente) {
 		this.cpfCliente = cpfCliente;
 	}
+	
+	@Transient
+	public Double getCalcularValorTotal() {
+		Double valorTotal = 0.0;
+		
+		if (veiculo != null) {
+			valorTotal += veiculo.getValorDiario();
+		}
+		
+		return valorTotal;
+	}
+
 	
 }
