@@ -54,6 +54,12 @@
 								</h:outputText>
 							</h:column>
 							<h:column>
+								<f:facet name="header">Valor</f:facet>
+								<h:outputText value="#{locacao.valor}">
+									<f:convertNumber pattern="R$ #,##0.00"/>
+								</h:outputText>
+							</h:column>
+							<h:column>
 								<f:facet name="header">Ações</f:facet>
 								<h:commandLink action="#{locacaoController.detalhar(locacao)}"
 									class="btn btn.focus btn-xs">
