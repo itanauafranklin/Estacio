@@ -55,6 +55,7 @@ public class VmouraApplication {
 		tipo.setValorDiario(150.0);
 		tipo.setQuantidadeTotal(10);
 		tipo.setDataHoraAtualizacao(new Date());
+		tipo.setExcluido(false);
 		tipoVeiculoRepositorio.save(tipo);
 		
 		Veiculo veiculo = new Veiculo();
@@ -68,6 +69,7 @@ public class VmouraApplication {
 		veiculo.setTipoCombustivel("Flex");
 		veiculo.setTipoVeiculo(tipo);
 		veiculo.setDataHoraAtualizacao(new Date());
+		veiculo.setExcluido(false);
 		veiculoRepositorio.save(veiculo);
 		
 		Endereco endereco = new Endereco();
@@ -79,6 +81,7 @@ public class VmouraApplication {
 		endereco.setCidade("Recife");
 		endereco.setEstado("PE");
 		endereco.setDataHoraAtualizacao(new Date());
+		endereco.setExcluido(false);
 		Cliente cliente = new Cliente();
 		cliente.setCpf("000.000.000-00");
 		cliente.setTelefone("(81)99999-9999");
@@ -88,6 +91,7 @@ public class VmouraApplication {
 		cliente.setDataNascimento(new Date());
 		cliente.setDataHoraAtualizacao(new Date());
 		cliente.setEndereco(endereco);
+		cliente.setExcluido(false);
 		clienteRepositorio.save(cliente);
 		
 		TipoItemAdicional tipo1 = new TipoItemAdicional();
@@ -96,6 +100,7 @@ public class VmouraApplication {
 		tipo1.setQuantidadeTotal(5);
 		tipo1.setValorDiario(15.0);
 		tipo1.setDataHoraAtualizacao(new Date());
+		tipo1.setExcluido(false);
 		tipoItemAdicionalRepositorio.save(tipo1);
 		
 		TipoItemAdicional tipo2 = new TipoItemAdicional();
@@ -104,6 +109,7 @@ public class VmouraApplication {
 		tipo2.setQuantidadeTotal(5);
 		tipo2.setValorDiario(15.0);
 		tipo2.setDataHoraAtualizacao(new Date());
+		tipo2.setExcluido(false);
 		tipoItemAdicionalRepositorio.save(tipo2);
 	}
 	

@@ -13,6 +13,7 @@ public abstract class AbstractServico<T extends ObjetoPersistente> {
 	@Transactional
 	public void salvarEntidade(T objeto) {
 		objeto.setDataHoraAtualizacao(new Date());
+		objeto.setExcluido(false);
 		salvar(objeto);
 	}
 

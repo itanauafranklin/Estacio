@@ -13,7 +13,11 @@ public interface ClienteRepositorio extends JpaRepository<Cliente, Integer> {
 	@Query("select cliente from Cliente cliente where cliente.cpf = :cpf")
 	Cliente buscarPorCPF(@Param("cpf") String cpf);
 	
-	@Query("select cliente from Cliente cliente where UPPER(cliente.nome) like CONCAT('%',UPPER(:nome),'%')")
+	@Query("select cliente from Cliente cliente where UPPER(cliente.nome) like CONCAT('%',UPPER(:nome),'%')"
+			+ " and cliente.excluido = false")
 	List<Cliente> buscarPorNome(@Param("nome") String nome);
+	
+	@Query("select cliente from Cliente cliente where cliente.excluido = false")
+	List<Cliente> buscarTodosAtivos();
 
 }

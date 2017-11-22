@@ -24,8 +24,8 @@ public class LocacaoServico extends AbstractServico<Locacao> {
 	
 	@Override
 	protected void salvar(Locacao locacao) {
-			locacaoRepositorio.save(locacao);
-		}
+		locacaoRepositorio.save(locacao);
+	}
 
 	public void validarInclusaoLocacao(Locacao locacao) {
 		Cliente cliente = clienteRepositorio.buscarPorCPF(locacao.getCpfCliente());
@@ -37,7 +37,7 @@ public class LocacaoServico extends AbstractServico<Locacao> {
 			isValido = false;
 		}
 		if (isValido) {
-			locacao.setValor(locacao.getCalcularValorTotal());
+//			locacao.setValor(locacao.getCalcularValorTotal());
 		}
 	}
 

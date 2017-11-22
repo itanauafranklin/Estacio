@@ -11,12 +11,20 @@ import org.springframework.stereotype.Service;
 
 import br.com.locadora.vmoura.dominio.entidade.Cliente;
 import br.com.locadora.vmoura.dominio.repositorio.ClienteRepositorio;
+import br.com.locadora.vmoura.dominio.repositorio.LocacaoRepositorio;
+import br.com.locadora.vmoura.dominio.repositorio.ReservaRepositorio;
 
 @Service
 public class ClienteServico extends AbstractServico<Cliente> {
 
 	@Autowired
     private ClienteRepositorio clienteRepositorio;
+	
+	@Autowired
+    private LocacaoRepositorio locacaoRepositorio;
+	
+	@Autowired
+    private ReservaRepositorio reservaRepositorio;
 	
 	@Override
 	protected void salvar(Cliente cliente) {
@@ -40,12 +48,18 @@ public class ClienteServico extends AbstractServico<Cliente> {
 
 	@Override
 	public void excluir(Cliente cliente) {
-		clienteRepositorio.delete(cliente);
+		if (locacaoRepositorio.existsByCliente(cliente)
+				|| reservaRepositorio.existsByCliente(cliente)) {
+			cliente.setExcluido(true);
+			clienteRepositorio.save(cliente);
+		} else {
+			clienteRepositorio.delete(cliente);
+		}
 	}
 	
 	public List<Cliente> pesquisar(String nome) {
 		if (nome == null || nome.trim().isEmpty()) {
-    		return clienteRepositorio.findAll();
+    		return clienteRepositorio.buscarTodosAtivos();
     	} else {
     		return clienteRepositorio.buscarPorNome(nome);
     	}

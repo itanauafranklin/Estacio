@@ -25,7 +25,8 @@ import org.hibernate.annotations.FetchMode;
 @Table(name="LOC_LOCACAO")
 @AttributeOverrides({  
     @AttributeOverride(name="codigo", column=@Column(name="LOC_ID")),  
-    @AttributeOverride(name="dataHoraAtualizacao", column=@Column(name="LOC_DH_ATUALIZACAO"))  
+    @AttributeOverride(name="dataHoraAtualizacao", column=@Column(name="LOC_DH_ATUALIZACAO")),
+    @AttributeOverride(name="excluido", column=@Column(name="LOC_EXCLUIDO"))
 })
 public class Locacao extends ObjetoPersistente {
 	
@@ -115,17 +116,5 @@ public class Locacao extends ObjetoPersistente {
 	public void setCpfCliente(String cpfCliente) {
 		this.cpfCliente = cpfCliente;
 	}
-	
-	@Transient
-	public Double getCalcularValorTotal() {
-		Double valorTotal = 0.0;
-		
-		if (veiculo != null) {
-			valorTotal += veiculo.getValorDiario();
-		}
-		
-		return valorTotal;
-	}
-
 	
 }

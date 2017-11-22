@@ -10,7 +10,10 @@ import br.com.locadora.vmoura.dominio.entidade.TipoVeiculo;
 
 public interface TipoVeiculoRepositorio extends JpaRepository<TipoVeiculo, Long> {
 	
-	@Query("select tipo from TipoVeiculo tipo where tipo.nome like %:nome%")
+	@Query("select tipo from TipoVeiculo tipo where tipo.nome like %:nome% and tipo.excluido = false")
 	List<TipoVeiculo> buscarPorNome(@Param("nome") String nome);
+	
+	@Query("select tipo from TipoVeiculo tipo where tipo.excluido = false")
+	List<TipoVeiculo> buscarTodosAtivos();
 
 }

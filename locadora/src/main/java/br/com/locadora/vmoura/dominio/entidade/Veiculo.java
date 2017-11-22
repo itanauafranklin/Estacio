@@ -13,7 +13,8 @@ import javax.transaction.Transactional;
 @Table(name="VEI_VEICULO")  
 @AttributeOverrides({  
     @AttributeOverride(name="codigo", column=@Column(name="VEI_ID")),  
-    @AttributeOverride(name="dataHoraAtualizacao", column=@Column(name="VEI_DH_ATUALIZACAO"))  
+    @AttributeOverride(name="dataHoraAtualizacao", column=@Column(name="VEI_DH_ATUALIZACAO")),
+    @AttributeOverride(name="excluido", column=@Column(name="VEI_EXCLUIDO"))
 })
 public class Veiculo extends ObjetoPersistente {
 	
@@ -45,9 +46,6 @@ public class Veiculo extends ObjetoPersistente {
 
 	@Column(name = "VEI_CHASSI")
 	private String chassi;
-	
-	@Column(name = "VEI_VL_DIARIO")
-	private Double valorDiario;
 
 	@PrimaryKeyJoinColumn
 	@ManyToOne(targetEntity = TipoVeiculo.class, optional = false)
@@ -129,14 +127,6 @@ public class Veiculo extends ObjetoPersistente {
 	public String getNome() {
 		return "(" + getPlaca() + ") " + getModelo() + 
 				" - " + getTipoVeiculo().getValorDiarioFormatado();
-	}
-
-	public Double getValorDiario() {
-		return valorDiario;
-	}
-	
-	public void setValorDiario(Double valorDiario) {
-		this.valorDiario = valorDiario;
 	}
 	
 }

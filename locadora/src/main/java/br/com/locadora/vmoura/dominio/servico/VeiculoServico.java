@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.locadora.vmoura.dominio.entidade.Veiculo;
+import br.com.locadora.vmoura.dominio.repositorio.LocacaoRepositorio;
 import br.com.locadora.vmoura.dominio.repositorio.VeiculoRepositorio;
 
 @Service
@@ -14,6 +15,9 @@ public class VeiculoServico extends AbstractServico<Veiculo> {
 	@Autowired
     private VeiculoRepositorio veiculoRepositorio;
 	
+	@Autowired
+    private LocacaoRepositorio locacaoRepositorio;
+	
 	@Override
 	protected void salvar(Veiculo veiculo) {
 		veiculoRepositorio.save(veiculo);
@@ -21,7 +25,12 @@ public class VeiculoServico extends AbstractServico<Veiculo> {
 
 	@Override
 	public void excluir(Veiculo veiculo) {
-		veiculoRepositorio.delete(veiculo);
+		if (locacaoRepositorio.existsByVeiculo(veiculo)) {
+			veiculo.setExcluido(true);
+			veiculoRepositorio.save(veiculo);
+		} else {
+			veiculoRepositorio.delete(veiculo);
+		}
 	}
 	
 	public List<Veiculo> pesquisar(String nome) {
@@ -33,6 +42,6 @@ public class VeiculoServico extends AbstractServico<Veiculo> {
 	}
 
 	public List<Veiculo> buscarTodos() {
-		return veiculoRepositorio.findAll();
+		return veiculoRepositorio.buscarTodosAtivos();
 	}
 }

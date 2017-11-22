@@ -10,7 +10,8 @@ import javax.persistence.Table;
 @Table(name="END_ENDERECO")  
 @AttributeOverrides({  
     @AttributeOverride(name="codigo", column=@Column(name="END_ID")),  
-    @AttributeOverride(name="dataHoraAtualizacao", column=@Column(name="END_DH_ATUALIZACAO"))  
+    @AttributeOverride(name="dataHoraAtualizacao", column=@Column(name="END_DH_ATUALIZACAO")),
+    @AttributeOverride(name="excluido", column=@Column(name="END_EXCLUIDO"))
 })
 public class Endereco extends ObjetoPersistente {
 	

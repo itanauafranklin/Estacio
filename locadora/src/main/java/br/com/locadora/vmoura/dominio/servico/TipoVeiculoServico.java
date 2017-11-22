@@ -6,13 +6,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.locadora.vmoura.dominio.entidade.TipoVeiculo;
+import br.com.locadora.vmoura.dominio.repositorio.ReservaRepositorio;
 import br.com.locadora.vmoura.dominio.repositorio.TipoVeiculoRepositorio;
+import br.com.locadora.vmoura.dominio.repositorio.VeiculoRepositorio;
 
 @Service
 public class TipoVeiculoServico extends AbstractServico<TipoVeiculo> {
 
 	@Autowired
     private TipoVeiculoRepositorio tipoVeiculoRepositorio;
+	
+	@Autowired
+    private VeiculoRepositorio veiculoRepositorio;
+	
+	@Autowired
+    private ReservaRepositorio reservaRepositorio;
 	
 	@Override
 	protected void salvar(TipoVeiculo tipoVeiculo) {
@@ -21,7 +29,13 @@ public class TipoVeiculoServico extends AbstractServico<TipoVeiculo> {
 
 	@Override
 	public void excluir(TipoVeiculo tipoVeiculo) {
-		tipoVeiculoRepositorio.delete(tipoVeiculo);
+		if (veiculoRepositorio.existsByTipoVeiculo(tipoVeiculo)
+				|| reservaRepositorio.existsByTipoVeiculo(tipoVeiculo)) {
+			tipoVeiculo.setExcluido(true);
+			tipoVeiculoRepositorio.save(tipoVeiculo);
+		} else {
+			tipoVeiculoRepositorio.delete(tipoVeiculo);
+		}
 	}
 	
 	public List<TipoVeiculo> pesquisar(String nome) {
@@ -33,6 +47,6 @@ public class TipoVeiculoServico extends AbstractServico<TipoVeiculo> {
 	}
 	
 	public List<TipoVeiculo> buscarTodos() {
-		return tipoVeiculoRepositorio.findAll();
+		return tipoVeiculoRepositorio.buscarTodosAtivos();
 	}
 }

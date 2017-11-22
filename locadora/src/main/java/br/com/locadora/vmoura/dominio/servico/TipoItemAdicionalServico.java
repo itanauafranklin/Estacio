@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.locadora.vmoura.dominio.entidade.TipoItemAdicional;
+import br.com.locadora.vmoura.dominio.repositorio.ItemAdicionalRepositorio;
+import br.com.locadora.vmoura.dominio.repositorio.ReservaRepositorio;
 import br.com.locadora.vmoura.dominio.repositorio.TipoItemAdicionalRepositorio;
 
 @Service
@@ -13,6 +15,12 @@ public class TipoItemAdicionalServico extends AbstractServico<TipoItemAdicional>
 
 	@Autowired
     private TipoItemAdicionalRepositorio tipoItemAdicionalRepositorio;
+
+	@Autowired
+    private ItemAdicionalRepositorio itemAdicionalRepositorio;
+	
+	@Autowired
+    private ReservaRepositorio reservaRepositorio;
 	
 	@Override
 	protected void salvar(TipoItemAdicional tipoItemAdicional) {
@@ -21,7 +29,13 @@ public class TipoItemAdicionalServico extends AbstractServico<TipoItemAdicional>
 
 	@Override
 	public void excluir(TipoItemAdicional tipoItemAdicional) {
-		tipoItemAdicionalRepositorio.delete(tipoItemAdicional);
+		if (reservaRepositorio.existsByTiposItensAdicionais(tipoItemAdicional)
+				|| itemAdicionalRepositorio.existsByTipoItemAdicional(tipoItemAdicional)) {
+			tipoItemAdicional.setExcluido(true);
+			tipoItemAdicionalRepositorio.save(tipoItemAdicional);
+		} else {
+			tipoItemAdicionalRepositorio.delete(tipoItemAdicional);
+		}
 	}
 	
 	public List<TipoItemAdicional> pesquisar(String nome) {
@@ -33,6 +47,6 @@ public class TipoItemAdicionalServico extends AbstractServico<TipoItemAdicional>
 	}
 
 	public List<TipoItemAdicional> buscarTodos() {
-		return tipoItemAdicionalRepositorio.findAll();
+		return tipoItemAdicionalRepositorio.buscarTodosAtivos();
 	}
 }

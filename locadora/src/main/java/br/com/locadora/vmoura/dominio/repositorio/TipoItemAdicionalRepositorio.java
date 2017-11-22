@@ -10,7 +10,10 @@ import br.com.locadora.vmoura.dominio.entidade.TipoItemAdicional;
 
 public interface TipoItemAdicionalRepositorio extends JpaRepository<TipoItemAdicional, Long> {
 	
-	@Query("select tipo from TipoItemAdicional tipo where tipo.nome like %:nome%")
+	@Query("select tipo from TipoItemAdicional tipo where tipo.nome like %:nome% and tipo.excluido = false")
 	List<TipoItemAdicional> buscarPorNome(@Param("nome") String nome);
+	
+	@Query("select tipo from TipoItemAdicional tipo where tipo.excluido = false")
+	List<TipoItemAdicional> buscarTodosAtivos();
 
 }

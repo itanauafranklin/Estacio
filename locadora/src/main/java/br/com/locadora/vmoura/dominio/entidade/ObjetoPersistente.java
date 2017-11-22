@@ -31,6 +31,9 @@ public class ObjetoPersistente implements Serializable {
     @Column(name = "dataHoraAtualizacao", nullable = false)
 	private Date dataHoraAtualizacao;
 	
+    @Column(name = "excluido", nullable = false)
+	private Boolean excluido;
+	
 	public int getCodigo() {
 		return codigo;
 	}
@@ -45,6 +48,14 @@ public class ObjetoPersistente implements Serializable {
 	
 	public void setDataHoraAtualizacao(Date dataHoraAtualizacao) {
 		this.dataHoraAtualizacao = dataHoraAtualizacao;
+	}
+
+	public Boolean getExcluido() {
+		return excluido;
+	}
+
+	public void setExcluido(Boolean excluido) {
+		this.excluido = excluido;
 	}
 
 	@Override

@@ -13,7 +13,8 @@ import javax.transaction.Transactional;
 @Table(name="ITA_ITEM_ADICIONAL")
 @AttributeOverrides({  
     @AttributeOverride(name="codigo", column=@Column(name="ITA_ID")),  
-    @AttributeOverride(name="dataHoraAtualizacao", column=@Column(name="ITA_DH_ATUALIZACAO"))  
+    @AttributeOverride(name="dataHoraAtualizacao", column=@Column(name="ITA_DH_ATUALIZACAO")),
+    @AttributeOverride(name="excluido", column=@Column(name="ITA_EXCLUIDO"))
 })
 public class ItemAdicional extends ObjetoPersistente {
 	

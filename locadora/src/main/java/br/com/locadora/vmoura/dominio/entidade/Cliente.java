@@ -16,8 +16,9 @@ import javax.persistence.TemporalType;
 @Entity
 @Table(name="CLI_CLIENTE")
 @AttributeOverrides({  
-    @AttributeOverride(name="codigo", column=@Column(name="CLI_ID")),  
-    @AttributeOverride(name="dataHoraAtualizacao", column=@Column(name="CLI_DH_ATUALIZACAO"))  
+    @AttributeOverride(name="codigo", column=@Column(name="CLI_ID")),
+    @AttributeOverride(name="dataHoraAtualizacao", column=@Column(name="CLI_DH_ATUALIZACAO")),
+    @AttributeOverride(name="excluido", column=@Column(name="CLI_EXCLUIDO"))
 })
 public class Cliente extends ObjetoPersistente {
 	

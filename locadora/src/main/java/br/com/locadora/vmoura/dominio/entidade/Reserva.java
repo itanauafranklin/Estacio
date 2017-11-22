@@ -25,7 +25,8 @@ import org.hibernate.annotations.FetchMode;
 @Table(name="RES_RESERVA")
 @AttributeOverrides({  
     @AttributeOverride(name="codigo", column=@Column(name="RES_ID")),  
-    @AttributeOverride(name="dataHoraAtualizacao", column=@Column(name="RES_DH_ATUALIZACAO"))  
+    @AttributeOverride(name="dataHoraAtualizacao", column=@Column(name="RES_DH_ATUALIZACAO")),
+    @AttributeOverride(name="excluido", column=@Column(name="RES_EXCLUIDO"))
 })
 public class Reserva extends ObjetoPersistente {
 	

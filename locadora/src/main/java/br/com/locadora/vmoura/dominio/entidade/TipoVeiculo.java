@@ -11,7 +11,8 @@ import javax.persistence.Transient;
 @Table(name="TIV_TIPO_VEICULO")
 @AttributeOverrides({  
     @AttributeOverride(name="codigo", column=@Column(name="TIV_ID")),  
-    @AttributeOverride(name="dataHoraAtualizacao", column=@Column(name="TIV_DH_ATUALIZACAO"))  
+    @AttributeOverride(name="dataHoraAtualizacao", column=@Column(name="TIV_DH_ATUALIZACAO")),
+    @AttributeOverride(name="excluido", column=@Column(name="TIV_EXCLUIDO"))
 })
 public class TipoVeiculo extends ObjetoPersistente {
 	
