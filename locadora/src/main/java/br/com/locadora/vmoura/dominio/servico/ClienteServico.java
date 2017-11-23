@@ -29,10 +29,11 @@ public class ClienteServico extends AbstractServico<Cliente> {
 	@Override
 	protected void salvar(Cliente cliente) {
 		if (validarInclusaoCliente(cliente)) {
-			
+			cliente.getEndereco().setDataHoraAtualizacao(new Date());
+			cliente.getEndereco().setExcluido(false);
+			clienteRepositorio.save(cliente);
 		}
-		cliente.getEndereco().setDataHoraAtualizacao(new Date());
-		clienteRepositorio.save(cliente);
+		
 	}
 
 	private boolean validarInclusaoCliente(Cliente cliente) {
