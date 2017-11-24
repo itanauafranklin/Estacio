@@ -38,4 +38,13 @@
 	    <converter-id>itemAdicionalConverter</converter-id>
 	    <converter-class>br.com.locadora.vmoura.dominio.controle.conversor.ItemAdicionalConversor</converter-class>
 	</converter>
+	<converter>
+	    <description>Conversor CPF</description>
+		<converter-id>converter.CpfConverter</converter-id>
+		<converter-class>br.com.locadora.vmoura.dominio.controle.conversor.CpfConverter</converter-class>
+	</converter>
+	<validator>
+		<validator-id>validator.CpfValidator</validator-id>
+		<validator-class>br.com.locadora.vmoura.dominio.controle.validador.CpfValidator</validator-class>
+	</validator>
 </faces-config>

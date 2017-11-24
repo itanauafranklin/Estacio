@@ -41,7 +41,6 @@ public class ClienteController extends GenericController {
 	
 	public String salvar() {
 		clienteServico.salvarEntidade(cliente);
-		cliente = new Cliente();
 		return avancarPagina("listar.jsf?faces-redirect=true");
 	}
 	

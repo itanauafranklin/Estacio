@@ -83,7 +83,7 @@ public class VmouraApplication {
 		endereco.setDataHoraAtualizacao(new Date());
 		endereco.setExcluido(false);
 		Cliente cliente = new Cliente();
-		cliente.setCpf("000.000.000-00");
+		cliente.setCpf("00000000000");
 		cliente.setTelefone("(81)99999-9999");
 		cliente.setRg("0000000");
 		cliente.setNome("Fulano da Silva");
