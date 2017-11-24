@@ -73,6 +73,11 @@ public class LocacaoController extends GenericController {
 		locacaoServico.excluir(locacao);
 		return avancarPagina("listar.jsf?faces-redirect=true");
 	}
+	
+	public String devolver(Locacao locacao) {
+		locacaoServico.devolver(locacao);
+		return avancarPagina("listar.jsf?faces-redirect=true");
+	}
     
     public List<Locacao> pesquisar() {
     	return locacaoServico.pesquisar(getFiltro());

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.locadora.vmoura.dominio.entidade.TipoVeiculo;
+import br.com.locadora.vmoura.dominio.repositorio.LocacaoRepositorio;
 import br.com.locadora.vmoura.dominio.repositorio.ReservaRepositorio;
 import br.com.locadora.vmoura.dominio.repositorio.TipoVeiculoRepositorio;
 import br.com.locadora.vmoura.dominio.repositorio.VeiculoRepositorio;
@@ -22,6 +23,9 @@ public class TipoVeiculoServico extends AbstractServico<TipoVeiculo> {
 	
 	@Autowired
     private ReservaRepositorio reservaRepositorio;
+	
+	@Autowired
+    private LocacaoRepositorio locacaoRepositorio;
 	
 	@Override
 	protected void salvar(TipoVeiculo tipoVeiculo) {
@@ -48,7 +52,19 @@ public class TipoVeiculoServico extends AbstractServico<TipoVeiculo> {
 	}
 	
 	public boolean isTipoVeiculoDisponivel(TipoVeiculo tipoVeiculo, Date dataInicio, Date dataFim) {
-		return true;
+		Long qtdeReservas = 
+				reservaRepositorio.quantidadeReservaPorTipoVeiculo(
+						tipoVeiculo, dataInicio, dataFim);
+		
+		Long qtdeLocacoes = 
+				locacaoRepositorio.quantidadeLocacaoPorTipoVeiculo(
+						tipoVeiculo, dataInicio, dataFim);
+		
+		if (tipoVeiculo.getQuantidadeTotal() - (qtdeReservas + qtdeLocacoes) == 0) {
+			return false;
+		} else {
+			return true;
+		}
 	}
 	
 	public List<TipoVeiculo> buscarTodos() {

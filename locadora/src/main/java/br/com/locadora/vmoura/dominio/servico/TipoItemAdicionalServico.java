@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import br.com.locadora.vmoura.dominio.entidade.TipoItemAdicional;
 import br.com.locadora.vmoura.dominio.repositorio.ItemAdicionalRepositorio;
+import br.com.locadora.vmoura.dominio.repositorio.LocacaoRepositorio;
 import br.com.locadora.vmoura.dominio.repositorio.ReservaRepositorio;
 import br.com.locadora.vmoura.dominio.repositorio.TipoItemAdicionalRepositorio;
 
@@ -22,6 +23,9 @@ public class TipoItemAdicionalServico extends AbstractServico<TipoItemAdicional>
 	
 	@Autowired
     private ReservaRepositorio reservaRepositorio;
+	
+	@Autowired
+    private LocacaoRepositorio locacaoRepositorio;
 	
 	@Override
 	protected void salvar(TipoItemAdicional tipoItemAdicional) {
@@ -47,8 +51,20 @@ public class TipoItemAdicionalServico extends AbstractServico<TipoItemAdicional>
     	}
 	}
 	
-	public boolean isTipoItemAdicionalDisponivel(TipoItemAdicional tipoVeiculo, Date dataInicio, Date dataFim) {
-		return true;
+	public boolean isTipoItemAdicionalDisponivel(TipoItemAdicional tipoItemAdicional, Date dataInicio, Date dataFim) {
+		Long qtdeReservas = 
+				reservaRepositorio.quantidadeReservaPorTipoItemAdicional(
+						tipoItemAdicional, dataInicio, dataFim);
+		
+		Long qtdeLocacoes = 
+				locacaoRepositorio.quantidadeLocacaoPorTipoItemAdicional(
+						tipoItemAdicional, dataInicio, dataFim);
+		
+		if (tipoItemAdicional.getQuantidadeTotal() - (qtdeReservas + qtdeLocacoes) == 0) {
+			return false;
+		} else {
+			return true;
+		}
 	}
 
 	public List<TipoItemAdicional> buscarTodos() {

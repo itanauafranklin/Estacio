@@ -2,6 +2,8 @@ package br.com.locadora.vmoura.dominio.servico;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,6 +31,7 @@ public class LocacaoServico extends AbstractServico<Locacao> {
 	
 	@Override
 	protected void salvar(Locacao locacao) {
+		locacao.setDevolvido(false);
 		locacaoRepositorio.save(locacao);
 	}
 
@@ -48,13 +51,13 @@ public class LocacaoServico extends AbstractServico<Locacao> {
 		} else if (locacao.getDataEntrega().before(locacao.getDataRetirada())) {
 			adicionarMensagemErro("A 'Data de entrega' não pode ser menor que a 'Data de retirada'.");
 			isValido = false;
-		} else if (tipoVeiculoServico.isTipoVeiculoDisponivel(
+		} else if (!tipoVeiculoServico.isTipoVeiculoDisponivel(
 				locacao.getVeiculo().getTipoVeiculo(), locacao.getDataRetirada(), locacao.getDataEntrega())) {
 			adicionarMensagemErro("'Veículo' indisponível para as datas informadas.");
 			isValido = false;
 		} else {
 			for (ItemAdicional item : locacao.getItensAdicionais()) {
-				if (tipoItemAdicionalServico.isTipoItemAdicionalDisponivel(
+				if (!tipoItemAdicionalServico.isTipoItemAdicionalDisponivel(
 						item.getTipoItemAdicional(), locacao.getDataRetirada(), locacao.getDataEntrega())) {
 					adicionarMensagemErro("Item adicional '" + item.getTipoItemAdicional().getNome() + "' indisponível para as datas informadas.");
 					isValido = false;
@@ -93,5 +96,11 @@ public class LocacaoServico extends AbstractServico<Locacao> {
     	} else {
     		return locacaoRepositorio.buscarPorCPFCliente(cpf);
     	}
+	}
+	
+	@Transactional
+	public void devolver(Locacao locacao) {
+		locacao.setDevolvido(true);
+		locacaoRepositorio.save(locacao);
 	}
 }

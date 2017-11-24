@@ -52,6 +52,9 @@ public class Locacao extends ObjetoPersistente {
 	@Column(name = "LOC_VALOR")
 	private Double valor;
 	
+	@Column(name = "LOC_DEVOLVIDO", nullable = false)
+	private Boolean devolvido;
+	
 	@ManyToMany(fetch = FetchType.EAGER)
 	@Fetch(FetchMode.SUBSELECT)
 	   @JoinTable(name = "LOC_ITA", uniqueConstraints = {@UniqueConstraint(columnNames = {"LOC_ID", "ITA_ID"})}, joinColumns = {
@@ -109,6 +112,14 @@ public class Locacao extends ObjetoPersistente {
 		this.itensAdicionais = itensAdicionais;
 	}
 	
+	public Boolean getDevolvido() {
+		return devolvido;
+	}
+
+	public void setDevolvido(Boolean devolvido) {
+		this.devolvido = devolvido;
+	}
+
 	public String getCpfCliente() {
 		return cpfCliente;
 	}

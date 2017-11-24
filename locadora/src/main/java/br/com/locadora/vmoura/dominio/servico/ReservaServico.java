@@ -50,13 +50,13 @@ public class ReservaServico extends AbstractServico<Reserva> {
 		} else if (reserva.getDataEntrega().before(reserva.getDataRetirada())) {
 			adicionarMensagemErro("A 'Data de entrega' não pode ser menor que a 'Data de retirada'.");
 			isValido = false;
-		} else if (tipoVeiculoServico.isTipoVeiculoDisponivel(
+		} else if (!tipoVeiculoServico.isTipoVeiculoDisponivel(
 				reserva.getTipoVeiculo(), reserva.getDataRetirada(), reserva.getDataEntrega())) {
 			adicionarMensagemErro("'Tipo de veículo' indisponível para as datas informadas.");
 			isValido = false;
 		} else {
 			for (TipoItemAdicional tipoItem : reserva.getTiposItensAdicionais()) {
-				if (tipoItemAdicionalServico.isTipoItemAdicionalDisponivel(
+				if (!tipoItemAdicionalServico.isTipoItemAdicionalDisponivel(
 						tipoItem, reserva.getDataRetirada(), reserva.getDataEntrega())) {
 					adicionarMensagemErro("Item adicional '" + tipoItem.getNome() + "' indisponível para as datas informadas.");
 					isValido = false;

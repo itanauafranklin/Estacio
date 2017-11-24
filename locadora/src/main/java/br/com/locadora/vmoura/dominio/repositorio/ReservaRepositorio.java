@@ -1,5 +1,6 @@
 package br.com.locadora.vmoura.dominio.repositorio;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -21,5 +22,17 @@ public interface ReservaRepositorio extends JpaRepository<Reserva, Long> {
 	boolean existsByTipoVeiculo(TipoVeiculo tipoVeiculo);
 	
 	boolean existsByTiposItensAdicionais(TipoItemAdicional tipoItemAdicional);
+	
+	@Query("select count(reserva) from Reserva reserva where reserva.tiposItensAdicionais = :tipoItemAdicional and ("
+			+ "(:dataInicial between reserva.dataRetirada and reserva.dataEntrega) "
+			+ "or (:dataFinal between reserva.dataRetirada and reserva.dataEntrega) )")
+	Long quantidadeReservaPorTipoItemAdicional(@Param("tipoItemAdicional") TipoItemAdicional tipoItemAdicional, 
+			@Param("dataInicial") Date dataInicial, @Param("dataFinal") Date dataFinal);
+	
+	@Query("select count(reserva) from Reserva reserva where reserva.tipoVeiculo = :tipoVeiculo and ("
+			+ "(:dataInicial between reserva.dataRetirada and reserva.dataEntrega) "
+			+ "or (:dataFinal between reserva.dataRetirada and reserva.dataEntrega) )")
+	Long quantidadeReservaPorTipoVeiculo(@Param("tipoVeiculo") TipoVeiculo tipoVeiculo, 
+			@Param("dataInicial") Date dataInicial, @Param("dataFinal") Date dataFinal);
 
 }
