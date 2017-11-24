@@ -26,13 +26,13 @@ public interface LocacaoRepositorio extends JpaRepository<Locacao, Long> {
 	boolean existsByItensAdicionais(ItemAdicional itemAdicional);
 	
 	@Query("select count(locacao) from Locacao locacao inner join locacao.itensAdicionais itemAdicional "
-			+ "where locacao.devolvido = false itemAdicional.tipoItemAdicional = :tipoItemAdicional and ("
+			+ "where locacao.devolvido = false and itemAdicional.tipoItemAdicional = :tipoItemAdicional and ("
 			+ "(:dataInicial between locacao.dataRetirada and locacao.dataEntrega) "
 			+ "or (:dataFinal between locacao.dataRetirada and locacao.dataEntrega) )")
 	Long quantidadeLocacaoPorTipoItemAdicional(@Param("tipoItemAdicional") TipoItemAdicional tipoItemAdicional, 
 			@Param("dataInicial") Date dataInicial, @Param("dataFinal") Date dataFinal);
 	
-	@Query("select count(locacao) from Locacao locacao where locacao.devolvido = false "
+	@Query("select count(locacao) from Locacao locacao where locacao.devolvido = false and "
 			+ "locacao.veiculo.tipoVeiculo = :tipoVeiculo and ("
 			+ "(:dataInicial between locacao.dataRetirada and locacao.dataEntrega) "
 			+ "or (:dataFinal between locacao.dataRetirada and locacao.dataEntrega) )")
