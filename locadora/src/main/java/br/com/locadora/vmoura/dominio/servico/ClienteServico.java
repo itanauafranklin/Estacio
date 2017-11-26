@@ -3,9 +3,6 @@ package br.com.locadora.vmoura.dominio.servico;
 import java.util.Date;
 import java.util.List;
 
-import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -40,8 +37,7 @@ public class ClienteServico extends AbstractServico<Cliente> {
 		boolean isValido = true;
 		if (cliente.getCodigo() == 0 
 				&& clienteRepositorio.buscarPorCPF(cliente.getCpf()) != null) {
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Já existe um cliente com esse CPF."));
-			FacesContext.getCurrentInstance().validationFailed();
+			adicionarMensagemErro("Já existe um cliente com esse CPF.");
 			isValido = false;
 		}
 		return isValido;

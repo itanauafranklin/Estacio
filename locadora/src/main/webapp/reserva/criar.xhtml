@@ -15,8 +15,9 @@
 					<div class="form-group col-md-3">
 						<label for="cpf">CPF</label>
 						<h:inputText class="form-control" id="cpf" value="#{reservaController.reserva.cpfCliente}"
-							required="true" requiredMessage="Campo 'CPF' obrigatório."
-							converterMessage="O formato do 'CPF' deve ser 'XXX.XXX.XXX-XX'.">
+							required="true" requiredMessage="Campo 'CPF' obrigatório.">
+							<f:converter converterId="converter.CpfConverter" />
+							<f:validator validatorId="validator.CpfValidator" />
 						</h:inputText>
 					</div>
 
