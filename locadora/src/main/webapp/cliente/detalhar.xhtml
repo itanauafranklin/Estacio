@@ -44,7 +44,9 @@
 							<strong>CPF</strong>
 						</p>
 						<p>
-							<h:outputText value="#{clienteController.cliente.cpf}"/>
+							<h:outputText value="#{clienteController.cliente.cpf}">
+								<f:converter converterId="converter.CpfConverter" />
+							</h:outputText>
 						</p>
 					</div>
 					<div class="col-md-4">

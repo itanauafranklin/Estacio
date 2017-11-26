@@ -39,7 +39,9 @@
 							class="table table-striped">
 							<h:column>
 								<f:facet name="header">CPF</f:facet>
-								<h:outputText value="#{locacao.cliente.nome}" />
+								<h:outputText value="#{locacao.cliente.nome}">
+									<f:converter converterId="converter.CpfConverter" />
+								</h:outputText>
 							</h:column>
 							<h:column>
 								<f:facet name="header">Data de Retirada</f:facet>

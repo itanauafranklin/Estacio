@@ -16,7 +16,7 @@ import br.com.locadora.vmoura.dominio.entidade.Veiculo;
 
 public interface LocacaoRepositorio extends JpaRepository<Locacao, Long> {
 	
-	@Query("select locacao from Locacao locacao where locacao.cliente.cpf like %:cpf%")
+	@Query("select locacao from Locacao locacao where locacao.cliente.cpf like %:cpf% and locacao.devolvido = false")
 	List<Locacao> buscarPorCPFCliente(@Param("cpf") String cpf);
 	
 	boolean existsByCliente(Cliente cliente);

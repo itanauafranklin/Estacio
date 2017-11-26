@@ -11,10 +11,10 @@ import br.com.locadora.vmoura.dominio.entidade.TipoItemAdicional;
 
 public interface ItemAdicionalRepositorio extends JpaRepository<ItemAdicional, Long> {
 	
-	@Query("select item from ItemAdicional item where item.tipoItemAdicional.nome = :nome")
+	@Query("select item from ItemAdicional item where UPPER(item.tipoItemAdicional.nome) like CONCAT('%',UPPER(:nome),'%')")
 	List<ItemAdicional> buscarPorItem(@Param("nome") String nome);
 
-	@Query("select item from ItemAdicional item where item.excluido = false")
+	@Query("select item from ItemAdicional item where item.excluido = false order by item.tipoItemAdicional.nome")
 	List<ItemAdicional> buscarTodosAtivos();
 	
 	boolean existsByTipoItemAdicional(TipoItemAdicional tipoItemAdicional);

@@ -23,7 +23,8 @@ public interface ReservaRepositorio extends JpaRepository<Reserva, Long> {
 	
 	boolean existsByTiposItensAdicionais(TipoItemAdicional tipoItemAdicional);
 	
-	@Query("select count(reserva) from Reserva reserva where reserva.tiposItensAdicionais = :tipoItemAdicional and ("
+	@Query("select count(reserva) from Reserva reserva inner join reserva.tiposItensAdicionais itemAdicional "
+			+ "where itemAdicional = :tipoItemAdicional and ("
 			+ "(:dataInicial between reserva.dataRetirada and reserva.dataEntrega) "
 			+ "or (:dataFinal between reserva.dataRetirada and reserva.dataEntrega) )")
 	Long quantidadeReservaPorTipoItemAdicional(@Param("tipoItemAdicional") TipoItemAdicional tipoItemAdicional, 
