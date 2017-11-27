@@ -92,7 +92,7 @@ public class LocacaoServico extends AbstractServico<Locacao> {
 	
 	public List<Locacao> pesquisar(String cpf) {
 		if (cpf == null || cpf.trim().isEmpty()) {
-    		return locacaoRepositorio.findAll();
+    		return locacaoRepositorio.buscarTodosAtivos();
     	} else {
     		return locacaoRepositorio.buscarPorCPFCliente(cpf);
     	}

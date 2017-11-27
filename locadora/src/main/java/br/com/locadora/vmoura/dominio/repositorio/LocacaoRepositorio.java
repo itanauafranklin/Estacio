@@ -19,6 +19,9 @@ public interface LocacaoRepositorio extends JpaRepository<Locacao, Long> {
 	@Query("select locacao from Locacao locacao where locacao.cliente.cpf like %:cpf% and locacao.devolvido = false")
 	List<Locacao> buscarPorCPFCliente(@Param("cpf") String cpf);
 	
+	@Query("select locacao from Locacao locacao where locacao.devolvido = false")
+	List<Locacao> buscarTodosAtivos();
+	
 	boolean existsByCliente(Cliente cliente);
 	
 	boolean existsByVeiculo(Veiculo cliente);
