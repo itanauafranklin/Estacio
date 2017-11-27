@@ -1,11 +1,16 @@
 package br.com.locadora.vmoura.util;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
 import java.util.Date;
 
 public class DataUtil {
+	
+	
 	
 	public static LocalDate converterDateParaLocalDate(Date date) {
 		return date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
@@ -21,5 +26,19 @@ public class DataUtil {
 		return Date.from(LocalDate.now(ZoneId.of("GMT-03:00"))
 				.atStartOfDay(ZoneId.systemDefault()).toInstant());
 	}
+	
+	public static Date formataData(String data) {
+        if (data == null || data.equals("")) {
+        	return null;
+        }
+        Date date = null;
+		try {
+			DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+			date = formatter.parse(data);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+        return date;
+    }
 
 }
